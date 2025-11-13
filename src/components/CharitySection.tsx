@@ -37,11 +37,11 @@ const initiatives = [
 
 export function CharitySection() {
   return (
-    <section className="relative py-24 px-6">
+    <section className="relative bg-[#0D0D0D] text-white overflow-hidden py-24 px-16 pt-18px">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lime-400/10 rounded-full blur-3xl" />
+
+        <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div 
           className="mb-16 space-y-4 text-center"
@@ -75,9 +75,9 @@ export function CharitySection() {
                   ease: "easeOut" 
                 }}
               >
-                <Card className="relative bg-gradient-to-br from-gray-900 to-black border-lime-500/20 overflow-hidden group hover:border-lime-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-lime-400/10 p-8 h-full">
+                <Card className="relative bg-black group hover:border-lime-400/10 transition-all duration-300 hover:inset-shadow-sm hover: inset-shadow-lime-400/20 p-8 h-full">
                   {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-lime-400/10 border border-lime-400/30 mb-6">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0D0D0D] mb-6">
                     <Icon className="w-7 h-7 text-lime-400" />
                   </div>
 

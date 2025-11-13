@@ -69,10 +69,10 @@ export function HowItWorks() {
               }}
             >
               <Card 
-                className="relative bg-gradient-to-br from-gray-900 to-black border-lime-500/20 overflow-hidden group hover:border-lime-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-lime-400/10"
+                className="relative bg-gradient-to-br from-lime-900/30 to-black overflow-hidden group hover:border-lime-400/10 transition-all duration-300 hover:shadow-xl hover:shadow-lime-400/10"
               >
                 {/* Card Image */}
-                <div className="relative w-full h-64 bg-gradient-to-br from-lime-900/20 to-purple-900/20 mb-6">
+                <div className="relative w-full h-64 bg-gradient-to-br from-lime-900/20 to-black-900/20 mb-6">
                   <img 
                     src={step.image}
                     alt={step.title}
@@ -82,7 +82,7 @@ export function HowItWorks() {
 
                 <div className="px-8 pb-8">
                   {/* Step badge */}
-                  <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-black/60 border border-lime-400/30">
+                  <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-black border border-lime-400/30">
                     <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
                     <span className="text-lime-400 text-sm">Étape {index + 1}</span>
                   </div>
