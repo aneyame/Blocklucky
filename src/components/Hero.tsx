@@ -11,7 +11,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 mx-[101px] my-[40px]">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm shadow-lg shadow-lime-400/50">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm shadow-md shadow-lime-400/20">
           <div className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
           <span className="text-lime-400 text-sm">La loterie ETH d'etherbay</span>
         </div>
