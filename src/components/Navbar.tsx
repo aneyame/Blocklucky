@@ -1,4 +1,24 @@
 import { Ticket } from "lucide-react";
+import { withConnectWallet, withBuyTicket } from "../lib/lottery";
+
+// Créer les boutons avec les fonctions du smart contract
+const ConnectWalletButton = withConnectWallet(({ onClick, children }: any) => (
+  <button 
+    onClick={onClick}
+    className="px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-full transition-all hover:shadow-lg hover:shadow-purple-600/50"
+  >
+    {children}
+  </button>
+));
+
+const BuyTicketButton = withBuyTicket(({ onClick }: any) => (
+  <button 
+    onClick={onClick}
+    className="px-6 py-2 bg-lime-400 hover:bg-lime-300 text-black rounded-full transition-all hover:shadow-lg hover:shadow-lime-400/50"
+  >
+    Participer
+  </button>
+));
 
 export function Navbar() {
   return (
@@ -25,13 +45,13 @@ export function Navbar() {
           </a>
         </div>
 
-        {/* CTA Button */}
-        <button className="px-6 py-2 bg-lime-400 hover:bg-lime-300 text-black rounded-full transition-all hover:shadow-lg hover:shadow-lime-400/50">
-          Connecter mon wallet
-        </button>
-        <button className="px-6 py-2 bg-lime-400 hover:bg-lime-300 text-black rounded-full transition-all hover:shadow-lg hover:shadow-lime-400/50">
-          Participer
-        </button>
+        {/* CTA Buttons */}
+        <div className="flex items-center gap-4">
+          <ConnectWalletButton>
+            Connecter mon wallet
+          </ConnectWalletButton>
+          <BuyTicketButton />
+        </div>
       </div>
     </nav>
   );

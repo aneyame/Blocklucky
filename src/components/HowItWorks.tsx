@@ -1,7 +1,7 @@
-import image_75f0fe1023929607e82dcb7a19c5c6616be59efb from 'figma:asset/75f0fe1023929607e82dcb7a19c5c6616be59efb.png';
-import image_9780c49b2867f3570ec80d94af4a2e948e69da35 from 'figma:asset/9780c49b2867f3570ec80d94af4a2e948e69da35.png';
-import image_74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47 from 'figma:asset/74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47.png';
-import image_74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47 from 'figma:asset/74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47.png';
+import image_75f0fe1023929607e82dcb7a19c5c6616be59efb from '../assets/75f0fe1023929607e82dcb7a19c5c6616be59efb.png';
+import image_9780c49b2867f3570ec80d94af4a2e948e69da35 from '../assets/9780c49b2867f3570ec80d94af4a2e948e69da35.png';
+import image_74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47 from '../assets/74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47.png';
+
 import { Wallet, Sparkles, Gift } from "lucide-react";
 import { Card } from "./ui/card";
 import { motion } from "motion/react";

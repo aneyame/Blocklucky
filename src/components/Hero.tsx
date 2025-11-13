@@ -1,6 +1,18 @@
-import image_9f76aed85e1c9a99b6c8879283140c04f8b1f1d7 from 'figma:asset/9f76aed85e1c9a99b6c8879283140c04f8b1f1d7.png';
+import image_9f76aed85e1c9a99b6c8879283140c04f8b1f1d7 from '../assets/9f76aed85e1c9a99b6c8879283140c04f8b1f1d7.png';
 import { ArrowRight } from "lucide-react";
-import heroImage from "figma:asset/c871b0fdc3cd1f539efdaac6281a3a607b8de5cf.png";
+import heroImage from "../assets/c871b0fdc3cd1f539efdaac6281a3a607b8de5cf.png";
+import { withBuyTicket } from "../lib/lottery";
+
+// Créer un bouton avec la fonction d'achat de ticket
+const BuyTicketButton = withBuyTicket(({ onClick, children }: any) => (
+  <button 
+    onClick={onClick}
+    className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group"
+  >
+    <span>{children}</span>
+    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-600 ease-in-out" />
+  </button>
+));
 
 export function Hero() {
   return (
@@ -28,17 +40,16 @@ export function Hero() {
         </p>
 
         {/* CTA Button */}
-        <button className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group">
-          <span>Participer</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-600 ease-in-out" />
-        </button>
+        <BuyTicketButton>
+          Participer
+        </BuyTicketButton>
 
         {/* Hero Image */}
         <div className="relative mt-16 max-w-4xl mx-auto">
           <div className="absolute inset-0 bg-gradient-to-t from-lime-400/20 to-transparent blur-3xl" />
           <div className="relative rounded-2xl overflow-hidden border border-lime-500/20 bg-gradient-to-br from-purple-900/10 to-lime-900/10 backdrop-blur-sm p-4 md:p-8 shadow-2xl shadow-lime-400/10">
             <img 
-              src={image_9f76aed85e1c9a99b6c8879283140c04f8b1f1d7} 
+              src={heroImage} 
               alt="Lottery Ticket" 
               className="w-full h-auto rounded-lg"
             />

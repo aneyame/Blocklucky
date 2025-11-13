@@ -1,11 +1,11 @@
-import image_a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60 from 'figma:asset/a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60.png';
-import image_c5c3252e015834012d3df4c262c1bd36e00b399a from 'figma:asset/c5c3252e015834012d3df4c262c1bd36e00b399a.png';
-import image_906dde62ccd59026a688442fdfde602d2ccafb99 from 'figma:asset/906dde62ccd59026a688442fdfde602d2ccafb99.png';
-import image_a84bac59490bc9db33817025853566e5daaf7dc7 from 'figma:asset/a84bac59490bc9db33817025853566e5daaf7dc7.png';
-import image_1d65a51c096acab9b6e363399c84f4ab84d222cc from 'figma:asset/1d65a51c096acab9b6e363399c84f4ab84d222cc.png';
+import image_a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60 from '../assets/a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60.png';
+import image_c5c3252e015834012d3df4c262c1bd36e00b399a from '../assets/c5c3252e015834012d3df4c262c1bd36e00b399a.png';
+import image_906dde62ccd59026a688442fdfde602d2ccafb99 from '../assets/906dde62ccd59026a688442fdfde602d2ccafb99.png';
+import image_a84bac59490bc9db33817025853566e5daaf7dc7 from '../assets/a84bac59490bc9db33817025853566e5daaf7dc7.png';
+import image_1d65a51c096acab9b6e363399c84f4ab84d222cc from '../assets/1d65a51c096acab9b6e363399c84f4ab84d222cc.png';
 import { Card } from "./ui/card";
 import { ArrowRight, Coins, Blocks, Wallet as WalletIcon, Zap } from "lucide-react";
-import dashboardImage from "figma:asset/7c16d0b0603316f2c555b608c2d58a73bb3f6bfe.png";
+import dashboardImage from "../assets/7c16d0b0603316f2c555b608c2d58a73bb3f6bfe.png";
 
 const cryptoCards = [
   {
