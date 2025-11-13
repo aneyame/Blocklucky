@@ -28,9 +28,9 @@ export function Hero() {
         </p>
 
         {/* CTA Button */}
-        <button className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all hover:shadow-lg hover:shadow-lime-400 group">
+        <button className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group">
           <span>Participer</span>
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-600 ease-in-out" />
         </button>
 
         {/* Hero Image */}

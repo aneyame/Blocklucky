@@ -55,82 +55,130 @@ export function Dashboard() {
       
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
         {/* Header section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="relative align-center">
           <div>
             <h2 className="text-4xl md:text-5xl text-white">
               Comprendre la crypto facilement
             </h2>
-          </div>
-          <div className="flex items-start justify-end">
-            <p className="text-gray-400 text-right max-w-md">
-              Cette loterie sert avant tout à vous introduire à ce monde là. Voici quelques explications rapides.
-            </p>
           </div>
         </div>
 
         {/* Info cards grid - 2 on top, 3 on bottom */}
         <div className="space-y-6">
           {/* First row - 2 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {cryptoCards.slice(0, 2).map((card, index) => (
-              <Card 
-                key={index}
-                className="relative bg-gradient-to-br from-gray-900 to-black border-lime-500/20 overflow-hidden group hover:border-lime-400/40 transition-all duration-300"
-              >
-                {/* Card Image */}
-                <div className="relative w-full h-56 bg-gradient-to-br from-lime-900/20 to-purple-900/20">
-                  <img 
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {cryptoCards.slice(0, 2).map((card, index) => (
+    <Card 
+      key={index}
+      className="relative bg-[#0D0D0D] overflow-hidden group rounded-xl transition-all duration-500 hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)]"
+    >
+      {/* Card Image */}
+      <div className="relative w-full h-56 overflow-hidden">
+        <img 
+          src={card.image}
+          alt={card.title}
+          className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        />
+        {/* Optional gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-lime-900/10 to-purple-900/10" />
+      </div>
 
-                <div className="px-6 pb-5 pt-2 space-y-2">
-                  <h3 className="text-white">{card.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
+      {/* Text Section */}
+      <div className="px-6 pb-5 pt-1 space-y-3">
+        <h3 className="text-white font-medium">{card.title}</h3>
+        <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
+      </div>
+    </Card>
+  ))}
+</div>
 
           {/* Second row - 3 cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {cryptoCards.slice(2).map((card, index) => (
-              <Card 
-                key={index + 2}
-                className="relative bg-gradient-to-br from-gray-900 to-black border-lime-500/20 overflow-hidden group hover:border-lime-400/40 transition-all duration-300"
-              >
-                {/* Card Image */}
-                <div className="relative w-full h-48 bg-gradient-to-br from-lime-900/20 to-purple-900/20">
-                  <img 
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            {cryptoCards.slice(2).map((card, index) => {
+              // Only the last card (Smart Contract) gets the special two-section design
+              if (index + 2 === 4) {
+                return (
+                  <Card 
+                    key={index + 2}
+                    className="relative bg-[#0D0D0D] overflow-hidden group hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)] transition-all duration-300"
+                  >
+                    {/* Top Section - Stats with overlapping images */}
+                    <div className="p-8 pb-6">
+                      {/* Overlapping circular images */}
+                      <div className="flex items-center mb-6">
+                        <div className="flex -space-x-4">
+                          <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
+                            <img 
+                              src="https://images.unsplash.com/photo-1708426238272-994fcddabca4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHBlcnNvbnxlbnwxfHx8fDE3NjI5NjA5MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                              alt="Person 1"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
+                            <img 
+                              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwxfHx8fDE3NjI5Njk0MjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                              alt="Person 2"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
+                            <img 
+                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                              alt="Person 3"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      </div>
 
-                <div className="p-6 space-y-3">
-                  {/* Special badge for Smart Contract card */}
-                  {index + 2 === 4 && (
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-lime-400/30 mb-2">
-                      <span className="text-lime-400 text-xs">6,5 millions de Français possèdent des cryptos</span>
+                      {/* Stat text */}
+                      <h3 className="text-white text-2xl leading-tight">
+                        6,5 millions de Français en possèdent
+                      </h3>
                     </div>
-                  )}
-                  
-                  <h3 className="text-white">{card.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
-                  
-                  {/* Learn more link for Smart Contract card */}
-                  {card.hasLink && (
-                    <button className="inline-flex items-center gap-2 text-lime-400 hover:text-lime-300 transition-colors group/link mt-2">
-                      <span className="text-sm">En savoir plus</span>
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </button>
-                  )}
-                </div>
-              </Card>
-            ))}
+
+                    {/* Divider */}
+                    <div className="h-px bg-gray-800 mx-8" />
+
+                    {/* Bottom Section - Smart Contract Info */}
+                    <div className="p-8 pt-6 space-y-3">
+                      <h3 className="text-white text-2xl">Smart Contract</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        La loterie est intrucable. C'est un programme autonome qui exécute des règles automatiquement.
+                      </p>
+                      
+                      {/* Learn more link */}
+                      <button className="inline-flex items-center gap-2 text-lime-400 hover:text-lime-300 transition-colors group/link mt-2">
+                        <span className="text-sm">En savoir plus</span>
+                        <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
+                  </Card>
+                );
+              }
+              
+              // All other cards use the original image + text format
+              return (
+                <Card 
+                  key={index + 2}
+                  className="relative bg-[#0D0D0D] overflow-hidden group hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)] transition-all duration-300"
+                >
+                  {/* Card Image */}
+                  <div className="relative w-full h-48 bg-gradient-to-br from-lime-900/20 to-purple-900/20">
+                    <img 
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="p-6 space-y-3">
+                    <h3 className="text-white">{card.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{card.description}</p>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>

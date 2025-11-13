@@ -49,6 +49,7 @@ export function HowItWorks() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm">
+            <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
             <span className="text-lime-400 text-sm">La loterie</span>
           </div>
           <h2 className="text-4xl md:text-5xl text-white">Comment ça fonctionne</h2>
