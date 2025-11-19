@@ -1,18 +1,7 @@
 import image_9f76aed85e1c9a99b6c8879283140c04f8b1f1d7 from '../assets/9f76aed85e1c9a99b6c8879283140c04f8b1f1d7.png';
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "../assets/c871b0fdc3cd1f539efdaac6281a3a607b8de5cf.png";
-import { withBuyTicket } from "../lib/lottery";
-
-// Créer un bouton avec la fonction d'achat de ticket
-const BuyTicketButton = withBuyTicket(({ onClick, children }: any) => (
-  <button 
-    onClick={onClick}
-    className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group"
-  >
-    <span>{children}</span>
-    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-600 ease-in-out" />
-  </button>
-));
 
 export function Hero() {
   return (
@@ -40,9 +29,13 @@ export function Hero() {
         </p>
 
         {/* CTA Button */}
-        <BuyTicketButton>
-          Participer
-        </BuyTicketButton>
+        <Link 
+          to="/participate"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group"
+        >
+          <span>Participer</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-600 ease-in-out" />
+        </Link>
 
         {/* Hero Image */}
         <div className="relative mt-16 max-w-4xl mx-auto">
