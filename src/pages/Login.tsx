@@ -39,8 +39,8 @@ export function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-12 px-4">
-      <div className="max-w-md mx-auto">
+    <div className="min-h-screen bg-black pb-12 px-4 flex items-center justify-center">
+      <div className="max-w-md mx-auto w-full">
         <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 border border-purple-500/30 rounded-xl p-8 backdrop-blur-sm">
           <h1 className="text-4xl font-bold text-white mb-2 text-center">
             <span className="bg-gradient-to-r from-lime-400 to-purple-400 bg-clip-text text-transparent">

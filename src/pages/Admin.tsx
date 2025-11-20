@@ -3,6 +3,9 @@ import { ethers } from "ethers"
 import { getConnectedAccount, getEthersProvider, CONTRACT_ADDRESS, subscribeToWalletChanges } from "../lib/wallet"
 import { supabase } from "../lib/supabase"
 import LotteryABI from "../lib/LotteryABI.json"
+import { DollarSign, Users, ArrowLeft, TrendingUp } from "lucide-react";
+import { Card } from "../components/ui/card";
+
 
 export function Admin() {
   const [account, setAccount] = useState<string | null>(null)
@@ -328,78 +331,411 @@ export function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    // <div className="min-h-screen bg-black pt-24 pb-12 px-4">
+    //   <div className="max-w-4xl mx-auto">
+    //     {/* Header */}
+    //     <div className="mb-8">
+    //       <h1 className="text-5xl font-bold text-white mb-3">
+    //         <span className="bg-gradient-to-r from-lime-400 to-purple-400 bg-clip-text text-transparent">
+    //           Admin Panel
+    //         </span>
+    //       </h1>
+    //       <p className="text-gray-400 text-lg">Gérer la loterie et lancer les tirages</p>
+    //     </div>
+
+    //     {/* Wallet Status */}
+    //     {!account ? (
+    //       <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border-2 border-red-500/50 rounded-xl p-6 mb-8">
+    //         <div className="flex items-center gap-3">
+    //           <span className="text-3xl">⚠️</span>
+    //           <div>
+    //             <p className="text-white font-semibold text-lg">Wallet non connecté</p>
+    //             <p className="text-gray-400 text-sm">Veuillez connecter votre wallet admin pour continuer</p>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     ) : (
+    //       <div className="bg-gradient-to-r from-lime-500/10 to-green-600/10 border-2 border-lime-500/50 rounded-xl p-6 mb-8">
+    //         <div className="flex items-center gap-3">
+    //           <span className="text-3xl">✓</span>
+    //           <div className="flex-1">
+    //             <p className="text-lime-400 font-semibold text-sm mb-1">CONNECTÉ EN TANT QUE ADMIN</p>
+    //             <p className="text-white font-mono text-sm break-all">{account}</p>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     <div className="grid md:grid-cols-2 gap-6 mb-8">
+    //       {/* Informations de la loterie */}
+    //       <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
+    //         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+    //           <span className="text-purple-400">📊</span> Statistiques
+    //         </h2>
+    //         <div className="space-y-4">
+    //           <div>
+    //             <p className="text-gray-300 text-sm font-medium mb-1">SAISON N°</p>
+    //             <p className="text-white text-2xl font-bold">{seasonNumber}</p>
+    //           </div>
+    //           <div>
+    //             <p className="text-gray-300 text-sm font-medium mb-1">TIRAGE N°</p>
+    //             <p className="text-white text-3xl font-bold">{drawNumber || "..."}</p>
+    //           </div>
+    //           <div>
+    //             <p className="text-gray-300 text-sm font-medium mb-1">TIRAGES RESTANTS</p>
+    //             <p className="text-white text-2xl font-bold">{remainingDraws}/6</p>
+    //           </div>
+    //           <div>
+    //             <p className="text-gray-300 text-sm font-medium mb-1">PARTICIPANTS</p>
+    //             <p className="text-white text-3xl font-bold">{players.length}</p>
+    //           </div>
+    //           <div className="pt-2 border-t border-purple-500/30">
+    //             <p className="text-gray-300 text-sm font-medium mb-1">SOLDE DU CONTRAT</p>
+    //             <p className="text-lime-400 text-2xl font-bold">{contractBalance} ETH</p>
+    //           </div>
+    //         </div>
+    //       </div>
+
+    //       {/* Bouton de tirage */}
+    //       <div className="bg-gradient-to-br from-lime-500/20 to-green-600/20 border-2 border-lime-500/50 rounded-xl p-6 backdrop-blur-sm flex flex-col">
+    //         <div className="flex-1">
+    //           <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+    //             <span className="text-lime-400">🎲</span> Tirage au sort
+    //           </h2>
+    //           <p className="text-gray-300 text-sm mb-4">
+    //             Sélectionne les gagnants et distribue automatiquement les récompenses.
+    //           </p>
+    //           <div className="mb-6">
+    //             <label className="text-white text-sm font-medium mb-2 block">
+    //               Nombre de gagnants
+    //             </label>
+    //             <input
+    //               type="number"
+    //               min="1"
+    //               max={players.length}
+    //               value={numberOfWinners}
+    //               onChange={(e) => setNumberOfWinners(Math.max(1, parseInt(e.target.value) || 1))}
+    //               className="w-full bg-black/40 border border-lime-500/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-lime-500"
+    //               disabled={!account || players.length === 0}
+    //             />
+    //           </div>
+    //         </div>
+    //         <button
+    //           onClick={handlePickWinners}
+    //           disabled={isLoading || !account || players.length === 0}
+    //           className="w-full bg-gradient-to-r from-lime-400 to-green-500 text-black font-bold py-4 px-6 rounded-lg hover:from-lime-300 hover:to-green-400 transition-all transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:hover:from-lime-400 disabled:hover:to-green-500 shadow-lg shadow-lime-500/30"
+    //         >
+    //           {isLoading ? (
+    //             <span className="flex items-center justify-center gap-2">
+    //               <span className="animate-spin">⏳</span> Tirage en cours...
+    //             </span>
+    //           ) : (
+    //             "🎲 Lancer le tirage"
+    //           )}
+    //         </button>
+    //         {players.length === 0 && account && (
+    //           <p className="text-gray-400 text-sm mt-3 text-center">
+    //             Aucun participant pour le moment
+    //           </p>
+    //         )}
+    //       </div>
+    //     </div>
+
+    //     {/* Gestion des fonds et saisons */}
+    //     {account && (
+    //       <div className="grid md:grid-cols-2 gap-6 mb-8">
+    //         {/* Gestion des fonds */}
+    //         <div className="bg-gradient-to-br from-green-900/50 to-emerald-800/30 border border-green-500/30 rounded-xl p-6 backdrop-blur-sm">
+    //           <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    //             <span className="text-green-400">💰</span> Gestion des fonds
+    //           </h2>
+    //           <div className="space-y-3">
+    //             <button
+    //               onClick={handleWithdrawFunds}
+    //               disabled={isLoading || remainingDraws > 0}
+    //               className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+    //             >
+    //               💵 Retirer les fonds
+    //             </button>
+    //             {remainingDraws > 0 && (
+    //               <p className="text-gray-400 text-xs text-center">
+    //                 Disponible après les 6 tirages ({remainingDraws} restant{remainingDraws > 1 ? 's' : ''})
+    //               </p>
+    //             )}
+    //             <button
+    //               onClick={handleEmergencyWithdraw}
+    //               disabled={isLoading}
+    //               className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+    //             >
+    //               ⚠️ Retrait d'urgence
+    //             </button>
+    //             <p className="text-gray-400 text-xs text-center">
+    //               Utiliser uniquement en cas de problème critique
+    //             </p>
+    //           </div>
+    //         </div>
+
+    //         {/* Gestion des saisons */}
+    //         <div className="bg-gradient-to-br from-blue-900/50 to-indigo-800/30 border border-blue-500/30 rounded-xl p-6 backdrop-blur-sm">
+    //           <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    //             <span className="text-blue-400">🔄</span> Gestion des saisons
+    //           </h2>
+    //           <div className="space-y-3">
+    //             <button
+    //               onClick={handleStartNewSeason}
+    //               disabled={isLoading || remainingDraws > 0}
+    //               className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-4 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed"
+    //             >
+    //               🎉 Nouvelle saison
+    //             </button>
+    //             {remainingDraws > 0 && (
+    //               <p className="text-gray-400 text-xs text-center">
+    //                 Disponible après les 6 tirages ({remainingDraws} restant{remainingDraws > 1 ? 's' : ''})
+    //               </p>
+    //             )}
+    //             <button
+    //               onClick={handleForceNewSeason}
+    //               disabled={isLoading}
+    //               className="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+    //             >
+    //               🔧 Forcer nouvelle saison (TEST)
+    //             </button>
+    //             <p className="text-gray-400 text-xs text-center">
+    //               Réinitialise immédiatement pour les tests
+    //             </p>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     {/* Liste des participants */}
+    //     {players.length > 0 && (
+    //       <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 border border-gray-700/50 rounded-xl p-6 backdrop-blur-sm mb-8">
+    //         <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    //           <span className="text-lime-400">👥</span> Liste des participants
+    //         </h2>
+    //         <div className="space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+    //           {players.map((player, index) => (
+    //             <div 
+    //               key={index} 
+    //               className="bg-black/40 border border-gray-700/50 rounded-lg p-4 hover:border-lime-500/50 transition-colors"
+    //             >
+    //               <div className="flex items-center gap-3">
+    //                 <span className="text-lime-400 font-bold text-sm">#{index + 1}</span>
+    //                 <div className="flex-1">
+    //                   <p className="text-gray-300 font-mono text-sm break-all">{player}</p>
+    //                   {walletEmails[player.toLowerCase()] && (
+    //                     <p className="text-lime-400 text-xs mt-1">✉️ {walletEmails[player.toLowerCase()]}</p>
+    //                   )}
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     {/* Liste des gagnants */}
+    //     {winners.length > 0 && (
+    //       <div className="bg-gradient-to-br from-yellow-900/50 to-orange-800/30 border-2 border-yellow-500/50 rounded-xl p-6 backdrop-blur-sm mb-8">
+    //         <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    //           <span className="text-yellow-400">🏆</span> Gagnants du dernier tirage
+    //         </h2>
+    //         <div className="space-y-3">
+    //           {winners.map((winner, index) => (
+    //             <div 
+    //               key={index} 
+    //               className="bg-yellow-500/10 border-2 border-yellow-500/50 rounded-lg p-4w-5ver:border-yellow-400 transition-colors"
+    //             >
+    //               <div className="flex items-center gap-3">
+    //                 <span className="text-2xl text-gray-300">{index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏅'}</span>
+    //                 <div className="flex-1">
+    //                   <p className="text-gray-300 text-xs font-semibold mb-1">GAGNANT #{index + 1}</p>
+    //                   <p className="text-white font-mono text-sm break-all">{winner}</p>
+    //                   {walletEmails[winner.toLowerCase()] && (
+    //                     <p className="text-lime-400 text-sm mt-1">✉️ {walletEmails[winner.toLowerCase()]}</p>
+    //                   )}
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     )}
+
+    //     {/* Historique de tous les tirages */}
+    //     {drawHistory.length > 0 && (
+    //       <div className="bg-gradient-to-br from-indigo-900/50 to-purple-800/30 border border-indigo-500/30 rounded-xl p-6 backdrop-blur-sm">
+    //         <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+    //           <span className="text-indigo-400">📜</span> Historique des tirages
+    //         </h2>
+    //         <div className="overflow-x-auto">
+    //           <table className="w-full">
+    //             <thead>
+    //               <tr className="border-b border-indigo-500/30">
+    //                 <th className="text-left py-3 px-4 text-white text-sm">Tirage N°</th>
+    //                 <th className="text-left py-3 px-4 text-white text-sm">Nombre de gagnants</th>
+    //                 <th className="text-left py-3 px-4 text-white text-sm">Gagnants</th>
+    //               </tr>
+    //             </thead>
+    //             <tbody>
+    //               {drawHistory.map((draw, drawIndex) => (
+    //                 <tr key={drawIndex} className="border-b border-indigo-500/10 hover:bg-indigo-500/5 transition-colors">
+    //                   <td className="py-4 px-4">
+    //                     <span className="text-white font-bold text-lg">#{draw.drawNumber}</span>
+    //                   </td>
+    //                   <td className="py-4 px-4">
+    //                     <span className="text-white font-semibold">{draw.winners.length}</span>
+    //                   </td>
+    //                   <td className="py-4 px-4">
+    //                     <div className="space-y-2">
+    //                       {draw.winners.map((winner, winnerIndex) => (
+    //                         <div key={winnerIndex} className="bg-black/20 rounded p-2">
+    //                           <div className="flex items-center gap-2 mb-1">
+    //                             <span className="text-lg text-gray-300">
+    //                               {winnerIndex === 0 ? '🥇' : winnerIndex === 1 ? '🥈' : winnerIndex === 2 ? '🥉' : '🏅'}
+    //                             </span>
+    //                             <span className="text-gray-300 font-mono text-xs break-all">{winner}</span>
+    //                           </div>
+    //                           {walletEmails[winner.toLowerCase()] && (
+    //                             <span className="text-lime-400 text-xs ml-8">✉️ {walletEmails[winner.toLowerCase()]}</span>
+    //                           )}
+    //                         </div>
+    //                       ))}
+    //                     </div>
+    //                   </td>
+    //                 </tr>
+    //               ))}
+    //             </tbody>
+    //           </table>
+    //         </div>
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
+
+    <div className="min-h-screen bg-black py-24 px-6">
+      {/* Background effects */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(138, 28, 38, 0.1)' }} />
+      <div className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(225, 176, 81, 0.1)' }} />
+
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold text-white mb-3">
-            <span className="bg-gradient-to-r from-lime-400 to-purple-400 bg-clip-text text-transparent">
-              Admin Panel
-            </span>
+          <div style={{height : '100px'}}>
+          </div>
+          <h1 className="text-4xl md:text-5xl text-white mb-8">
+            Tableau de bord Manager
           </h1>
-          <p className="text-gray-400 text-lg">Gérer la loterie et lancer les tirages</p>
+          <p style={{ color: 'rgba(156, 163, 175, 1)' }}>
+            Gérez la loterie et suivez les statistiques en temps réel
+          </p>
         </div>
 
         {/* Wallet Status */}
         {!account ? (
-          <div className="bg-gradient-to-r from-red-500/10 to-red-600/10 border-2 border-red-500/50 rounded-xl p-6 mb-8">
+          <div className="rounded-xl p-6 mb-8" style={{ background: 'linear-gradient(to right, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1))', borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(239, 68, 68, 0.5)' }}>
             <div className="flex items-center gap-3">
               <span className="text-3xl">⚠️</span>
               <div>
                 <p className="text-white font-semibold text-lg">Wallet non connecté</p>
-                <p className="text-gray-400 text-sm">Veuillez connecter votre wallet admin pour continuer</p>
+                <p className="text-sm" style={{ color: 'rgba(156, 163, 175, 1)' }}>Veuillez connecter votre wallet admin pour continuer</p>
               </div>
             </div>
           </div>
         ) : (
-          <div className="bg-gradient-to-r from-lime-500/10 to-green-600/10 border-2 border-lime-500/50 rounded-xl p-6 mb-8">
+          <div className="rounded-xl p-6 mb-8" style={{ background: 'linear-gradient(to right, rgba(132, 204, 22, 0.1), rgba(22, 163, 74, 0.1))', borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(132, 204, 22, 0.5)' }}>
             <div className="flex items-center gap-3">
               <span className="text-3xl">✓</span>
               <div className="flex-1">
-                <p className="text-lime-400 font-semibold text-sm mb-1">CONNECTÉ EN TANT QUE ADMIN</p>
+                <p className="font-semibold text-sm mb-1" style={{ color: 'rgba(163, 230, 53, 1)' }}>CONNECTÉ EN TANT QUE ADMIN</p>
                 <p className="text-white font-mono text-sm break-all">{account}</p>
               </div>
             </div>
           </div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Informations de la loterie */}
-          <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <Card className="p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+            <div className="flex items-start justify-between mb-4">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(225, 176, 81, 0.1)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.3)' }}>
+                <Users className="h-10 w-10" style={{ padding: '7px', color: 'rgba(225, 176, 81, 1)' }} />
+              </div>
+            </div>
+            <p style={{ color: 'rgba(156, 163, 175, 1)' }}>Participants</p>
+            <p className="text-3xl font-bold text-white">{players.length}</p>
+          </Card>
+
+          <Card className="p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(138, 28, 38, 0.2)' }}>
+            <div className="flex items-start justify-between mb-4">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(138, 28, 38, 0.1)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(138, 28, 38, 0.3)' }}>
+                <DollarSign className="h-10 w-10" style={{ padding: '7px', color: 'rgba(138, 28, 38, 1)' }} />
+              </div>
+            </div>
+            <p style={{ color: 'rgba(156, 163, 175, 1)' }}>Solde du contrat en ETH</p>
+            <p className="text-lg font-bold text-white">{contractBalance} ETH</p>
+          </Card>
+
+          <Card className="p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+            <div className="flex items-start justify-between mb-4">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(225, 176, 81, 0.1)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.3)' }}>
+                <DollarSign className="h-10 w-10" style={{ padding: '7px', color: 'rgba(225, 176, 81, 1)' }} />
+              </div>
+            </div>
+            <p  style={{ color: 'rgba(156, 163, 175, 1)' }}>Solde du contrat en €</p>
+            <p className="text-3xl font-bold text-white">{(parseFloat(contractBalance) * 2472.698)} €</p>
+          </Card>
+
+          <Card className="p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(138, 28, 38, 0.2)' }}>
+            <div className="flex items-start justify-between mb-4">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(138, 28, 38, 0.1)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(138, 28, 38, 0.3)' }}>
+                <TrendingUp className="h-10 w-10" style={{ padding: '7px', color: 'rgba(138, 28, 38, 1)' }} />
+              </div>
+            </div>
+            <p style={{ color: 'rgba(156, 163, 175, 1)' }}>Tirages restants</p>
+            <p className="text-3xl font-bold text-white">{remainingDraws}/6</p>
+          </Card>
+        </div>
+
+        {/* Statistiques et Tirage */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8 mt-16">
+          {/* Informations détaillées */}
+          <div className="rounded-xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.3)', backdropFilter: 'blur(8px)' }}>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="text-purple-400">📊</span> Statistiques
+              <span style={{ color: 'rgba(156, 163, 175, 1)' }}>📊</span> Statistiques
             </h2>
             <div className="space-y-4">
               <div>
-                <p className="text-gray-300 text-sm font-medium mb-1">SAISON N°</p>
+                <p className="text-sm font-medium mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>SAISON N°</p>
                 <p className="text-white text-2xl font-bold">{seasonNumber}</p>
               </div>
               <div>
-                <p className="text-gray-300 text-sm font-medium mb-1">TIRAGE N°</p>
+                <p className="text-sm font-medium mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>TIRAGE N°</p>
                 <p className="text-white text-3xl font-bold">{drawNumber || "..."}</p>
               </div>
               <div>
-                <p className="text-gray-300 text-sm font-medium mb-1">TIRAGES RESTANTS</p>
+                <p className="text-sm font-medium mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>TIRAGES RESTANTS</p>
                 <p className="text-white text-2xl font-bold">{remainingDraws}/6</p>
               </div>
               <div>
-                <p className="text-gray-300 text-sm font-medium mb-1">PARTICIPANTS</p>
+                <p className="text-sm font-medium mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>PARTICIPANTS</p>
                 <p className="text-white text-3xl font-bold">{players.length}</p>
               </div>
-              <div className="pt-2 border-t border-purple-500/30">
-                <p className="text-gray-300 text-sm font-medium mb-1">SOLDE DU CONTRAT</p>
-                <p className="text-lime-400 text-2xl font-bold">{contractBalance} ETH</p>
+              <div className="pt-2" style={{ borderTop: '1px solid rgba(75, 85, 99, 0.3)' }}>
+                <p className="text-sm font-medium mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>SOLDE DU CONTRAT</p>
+                <p className="text-2xl font-bold" style={{ color: 'rgba(225, 176, 81, 1)' }}>{contractBalance} ETH</p>
               </div>
             </div>
           </div>
 
           {/* Bouton de tirage */}
-          <div className="bg-gradient-to-br from-lime-500/20 to-green-600/20 border-2 border-lime-500/50 rounded-xl p-6 backdrop-blur-sm flex flex-col">
+          <div className="rounded-xl p-6 flex flex-col" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.3)', backdropFilter: 'blur(8px)' }}>
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
-                <span className="text-lime-400">🎲</span> Tirage au sort
+                <span style={{ color: 'rgba(225, 176, 81, 1)' }}>🎲</span> Tirage au sort
               </h2>
-              <p className="text-gray-300 text-sm mb-4">
+              <p className="text-sm mb-4" style={{ color: 'rgba(209, 213, 219, 1)' }}>
                 Sélectionne les gagnants et distribue automatiquement les récompenses.
               </p>
               <div className="mb-6">
@@ -412,7 +748,10 @@ export function Admin() {
                   max={players.length}
                   value={numberOfWinners}
                   onChange={(e) => setNumberOfWinners(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-full bg-black/40 border border-lime-500/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-lime-500"
+                  className="w-full rounded-lg px-4 py-2 text-white focus:outline-none"
+                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.5)' }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.5)'}
                   disabled={!account || players.length === 0}
                 />
               </div>
@@ -420,7 +759,26 @@ export function Admin() {
             <button
               onClick={handlePickWinners}
               disabled={isLoading || !account || players.length === 0}
-              className="w-full bg-gradient-to-r from-lime-400 to-green-500 text-black font-bold py-4 px-6 rounded-lg hover:from-lime-300 hover:to-green-400 transition-all transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:hover:from-lime-400 disabled:hover:to-green-500 shadow-lg shadow-lime-500/30"
+              className="w-full font-bold py-4 px-6 rounded-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              style={{ 
+                background: (isLoading || !account || players.length === 0) 
+                  ? 'rgba(138, 28, 38, 0.7)' 
+                  : 'rgba(138, 28, 38, 1)',
+                color: 'rgba(255, 255, 255, 1)',
+                boxShadow: '0 4px 6px -1px rgba(138, 28, 38, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                if (!isLoading && account && players.length > 0) {
+                  e.currentTarget.style.background = 'rgba(185, 28, 28, 1)';
+                  e.currentTarget.style.transform = 'scale(1.02)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isLoading && account && players.length > 0) {
+                  e.currentTarget.style.background = 'rgba(138, 28, 38, 1)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }
+              }}
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -431,7 +789,7 @@ export function Admin() {
               )}
             </button>
             {players.length === 0 && account && (
-              <p className="text-gray-400 text-sm mt-3 text-center">
+              <p className="text-sm mt-3 text-center" style={{ color: 'rgba(156, 163, 175, 1)' }}>
                 Aucun participant pour le moment
               </p>
             )}
@@ -442,63 +800,83 @@ export function Admin() {
         {account && (
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Gestion des fonds */}
-            <div className="bg-gradient-to-br from-green-900/50 to-emerald-800/30 border border-green-500/30 rounded-xl p-6 backdrop-blur-sm">
+            <div className="rounded-xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.3)', backdropFilter: 'blur(8px)' }}>
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="text-green-400">💰</span> Gestion des fonds
+                <span style={{ color: 'rgba(156, 163, 175, 1)' }}>💰</span> Gestion des fonds
               </h2>
               <div className="space-y-3">
-                <button
-                  onClick={handleWithdrawFunds}
-                  disabled={isLoading || remainingDraws > 0}
-                  className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  💵 Retirer les fonds
-                </button>
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleWithdrawFunds}
+                    disabled={isLoading || remainingDraws > 0}
+                    className="h-10 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    style={{ backgroundColor: 'rgba(75, 85, 99, 1)' }}
+                    onMouseEnter={(e) => !isLoading && remainingDraws === 0 && (e.currentTarget.style.backgroundColor = 'rgba(107, 114, 128, 1)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(75, 85, 99, 1)')}
+                  >
+                    💵 Retirer les fonds
+                  </button>
+                </div>
                 {remainingDraws > 0 && (
-                  <p className="text-gray-400 text-xs text-center">
+                  <p className="text-xs text-center" style={{ color: 'rgba(156, 163, 175, 1)' }}>
                     Disponible après les 6 tirages ({remainingDraws} restant{remainingDraws > 1 ? 's' : ''})
                   </p>
                 )}
-                <button
-                  onClick={handleEmergencyWithdraw}
-                  disabled={isLoading}
-                  className="w-full bg-red-600 hover:bg-red-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  ⚠️ Retrait d'urgence
-                </button>
-                <p className="text-gray-400 text-xs text-center">
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleEmergencyWithdraw}
+                    disabled={isLoading}
+                    className="h-10 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    style={{ backgroundColor: 'rgba(138, 28, 38, 1)' }}
+                    onMouseEnter={(e) => !isLoading && (e.currentTarget.style.backgroundColor = 'rgba(185, 28, 28, 1)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(138, 28, 38, 1)')}
+                  >
+                    ⚠️ Retrait d'urgence
+                  </button>
+                </div>
+                <p className="text-xs text-center" style={{ color: 'rgba(156, 163, 175, 1)' }}>
                   Utiliser uniquement en cas de problème critique
                 </p>
               </div>
             </div>
 
             {/* Gestion des saisons */}
-            <div className="bg-gradient-to-br from-blue-900/50 to-indigo-800/30 border border-blue-500/30 rounded-xl p-6 backdrop-blur-sm">
+            <div className="rounded-xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.3)', backdropFilter: 'blur(8px)' }}>
               <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="text-blue-400">🔄</span> Gestion des saisons
+                <span style={{ color: 'rgba(156, 163, 175, 1)' }}>🔄</span> Gestion des saisons
               </h2>
               <div className="space-y-3">
-                <button
-                  onClick={handleStartNewSeason}
-                  disabled={isLoading || remainingDraws > 0}
-                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-4 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  🎉 Nouvelle saison
-                </button>
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleStartNewSeason}
+                    disabled={isLoading || remainingDraws > 0}
+                    className="h-10 text-white font-semibold py-3 px-4 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed"
+                    style={{ backgroundColor: 'rgba(75, 85, 99, 1)' }}
+                    onMouseEnter={(e) => !isLoading && remainingDraws === 0 && (e.currentTarget.style.backgroundColor = 'rgba(107, 114, 128, 1)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(75, 85, 99, 1)')}
+                  >
+                    🎉 Nouvelle saison
+                  </button>
+                </div>
                 {remainingDraws > 0 && (
-                  <p className="text-gray-400 text-xs text-center">
+                  <p className="text-xs text-center" style={{ color: 'rgba(156, 163, 175, 1)' }}>
                     Disponible après les 6 tirages ({remainingDraws} restant{remainingDraws > 1 ? 's' : ''})
                   </p>
                 )}
-                <button
-                  onClick={handleForceNewSeason}
-                  disabled={isLoading}
-                  className="w-full bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  🔧 Forcer nouvelle saison (TEST)
-                </button>
-                <p className="text-gray-400 text-xs text-center">
-                  Réinitialise immédiatement pour les tests
+                <div className="flex justify-center">
+                  <button
+                    onClick={handleForceNewSeason}
+                    disabled={isLoading}
+                    className="h-10 text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                    style={{ backgroundColor: 'rgba(138, 28, 38, 1)' }}
+                    onMouseEnter={(e) => !isLoading && (e.currentTarget.style.backgroundColor = 'rgba(185, 28, 28, 1)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgba(138, 28, 38, 1)')}
+                  >
+                    🔧 Forcer nouvelle saison (TEST)
+                  </button>
+                </div>
+                <p className="text-xs text-center" style={{ color: 'rgba(156, 163, 175, 1)' }}>
+                  Réinitialise immédiatement
                 </p>
               </div>
             </div>
@@ -507,22 +885,25 @@ export function Admin() {
 
         {/* Liste des participants */}
         {players.length > 0 && (
-          <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 border border-gray-700/50 rounded-xl p-6 backdrop-blur-sm mb-8">
+          <div className="rounded-xl p-6 mb-8" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.3)', backdropFilter: 'blur(8px)' }}>
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="text-lime-400">👥</span> Liste des participants
+              <span style={{ color: 'rgba(225, 176, 81, 1)' }}>👥</span> Liste des participants
             </h2>
-            <div className="space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
               {players.map((player, index) => (
                 <div 
                   key={index} 
-                  className="bg-black/40 border border-gray-700/50 rounded-lg p-4 hover:border-lime-500/50 transition-colors"
+                  className="rounded-lg p-4 transition-colors"
+                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.5)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.5)'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 0.5)'}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-lime-400 font-bold text-sm">#{index + 1}</span>
+                    <span className="font-bold text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>#{index + 1}</span>
                     <div className="flex-1">
-                      <p className="text-gray-300 font-mono text-sm break-all">{player}</p>
+                      <p className="font-mono text-sm break-all" style={{ color: 'rgba(209, 213, 219, 1)' }}>{player}</p>
                       {walletEmails[player.toLowerCase()] && (
-                        <p className="text-lime-400 text-xs mt-1">✉️ {walletEmails[player.toLowerCase()]}</p>
+                        <p className="text-xs mt-1" style={{ color: 'rgba(225, 176, 81, 1)' }}>✉️ {walletEmails[player.toLowerCase()]}</p>
                       )}
                     </div>
                   </div>
@@ -534,23 +915,26 @@ export function Admin() {
 
         {/* Liste des gagnants */}
         {winners.length > 0 && (
-          <div className="bg-gradient-to-br from-yellow-900/50 to-orange-800/30 border-2 border-yellow-500/50 rounded-xl p-6 backdrop-blur-sm mb-8">
+          <div className="rounded-xl p-6 mb-8" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.3)', backdropFilter: 'blur(8px)' }}>
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="text-yellow-400">🏆</span> Gagnants du dernier tirage
+              <span style={{ color: 'rgba(225, 176, 81, 1)' }}>🏆</span> Gagnants du dernier tirage
             </h2>
             <div className="space-y-3">
               {winners.map((winner, index) => (
                 <div 
                   key={index} 
-                  className="bg-yellow-500/10 border-2 border-yellow-500/50 rounded-lg p-4w-5ver:border-yellow-400 transition-colors"
+                  className="rounded-lg p-4 transition-colors"
+                  style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.3)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl text-gray-300">{index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏅'}</span>
+                    <span className="text-2xl" style={{ color: 'rgba(209, 213, 219, 1)' }}>{index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🏅'}</span>
                     <div className="flex-1">
-                      <p className="text-gray-300 text-xs font-semibold mb-1">GAGNANT #{index + 1}</p>
+                      <p className="text-xs font-semibold mb-1" style={{ color: 'rgba(209, 213, 219, 1)' }}>GAGNANT #{index + 1}</p>
                       <p className="text-white font-mono text-sm break-all">{winner}</p>
                       {walletEmails[winner.toLowerCase()] && (
-                        <p className="text-lime-400 text-sm mt-1">✉️ {walletEmails[winner.toLowerCase()]}</p>
+                        <p className="text-sm mt-1" style={{ color: 'rgba(225, 176, 81, 1)' }}>✉️ {walletEmails[winner.toLowerCase()]}</p>
                       )}
                     </div>
                   </div>
@@ -562,14 +946,14 @@ export function Admin() {
 
         {/* Historique de tous les tirages */}
         {drawHistory.length > 0 && (
-          <div className="bg-gradient-to-br from-indigo-900/50 to-purple-800/30 border border-indigo-500/30 rounded-xl p-6 backdrop-blur-sm">
+          <div className="rounded-xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(75, 85, 99, 0.3)', backdropFilter: 'blur(8px)' }}>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="text-indigo-400">📜</span> Historique des tirages
+              <span style={{ color: 'rgba(156, 163, 175, 1)' }}>📜</span> Historique des tirages
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-indigo-500/30">
+                  <tr style={{ borderBottom: '1px solid rgba(75, 85, 99, 0.3)' }}>
                     <th className="text-left py-3 px-4 text-white text-sm">Tirage N°</th>
                     <th className="text-left py-3 px-4 text-white text-sm">Nombre de gagnants</th>
                     <th className="text-left py-3 px-4 text-white text-sm">Gagnants</th>
@@ -577,7 +961,13 @@ export function Admin() {
                 </thead>
                 <tbody>
                   {drawHistory.map((draw, drawIndex) => (
-                    <tr key={drawIndex} className="border-b border-indigo-500/10 hover:bg-indigo-500/5 transition-colors">
+                    <tr 
+                      key={drawIndex} 
+                      className="transition-colors" 
+                      style={{ borderBottom: '1px solid rgba(75, 85, 99, 0.2)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(75, 85, 99, 0.1)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                    >
                       <td className="py-4 px-4">
                         <span className="text-white font-bold text-lg">#{draw.drawNumber}</span>
                       </td>
@@ -587,15 +977,15 @@ export function Admin() {
                       <td className="py-4 px-4">
                         <div className="space-y-2">
                           {draw.winners.map((winner, winnerIndex) => (
-                            <div key={winnerIndex} className="bg-black/20 rounded p-2">
+                            <div key={winnerIndex} className="rounded p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                               <div className="flex items-center gap-2 mb-1">
-                                <span className="text-lg text-gray-300">
+                                <span className="text-lg" style={{ color: 'rgba(209, 213, 219, 1)' }}>
                                   {winnerIndex === 0 ? '🥇' : winnerIndex === 1 ? '🥈' : winnerIndex === 2 ? '🥉' : '🏅'}
                                 </span>
-                                <span className="text-gray-300 font-mono text-xs break-all">{winner}</span>
+                                <span className="font-mono text-xs break-all" style={{ color: 'rgba(209, 213, 219, 1)' }}>{winner}</span>
                               </div>
                               {walletEmails[winner.toLowerCase()] && (
-                                <span className="text-lime-400 text-xs ml-8">✉️ {walletEmails[winner.toLowerCase()]}</span>
+                                <span className="text-xs ml-8" style={{ color: 'rgba(225, 176, 81, 1)' }}>✉️ {walletEmails[winner.toLowerCase()]}</span>
                               )}
                             </div>
                           ))}

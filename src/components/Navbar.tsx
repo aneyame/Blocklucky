@@ -1,23 +1,33 @@
-import { Ticket, User, Wallet, Sparkles, LogIn } from "lucide-react";
+import { Ticket, User, Wallet } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { withConnectWallet } from "../lib/wallet";
 import { supabase } from "../lib/supabase";
 import { isAdmin } from "../lib/admin";
 
-const ConnectWalletButton = withConnectWallet(({ onClick, children, scrolled }: any) => (
-  <button 
-    onClick={onClick}
-    className={`bg-[#6E0E1A] hover:bg-[#8A1C26] text-white rounded-full transition-all duration-1200 ease-in-out hover:shadow-lg hover:shadow-[#8A1C26]/40 flex items-center gap-2 ${
-      scrolled ? 'px-3 py-2' : 'px-6 py-2'
-    }`}
-  >
-    <Wallet className={`transition-all duration-1200 ease-in-out ${scrolled ? 'w-4 h-4' : 'w-4 h-4'}`} />
-    <span className={`transition-all duration-1200 ease-in-out whitespace-nowrap overflow-hidden ${
-      scrolled ? 'w-0 opacity-0' : 'w-auto opacity-100'
-    }`}>{children}</span>
-  </button>
-));
+const ConnectWalletButton = withConnectWallet(({ onClick, children, scrolled }: any) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <button 
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`text-white rounded-full transition-all duration-1200 ease-in-out flex items-center gap-2 ${
+        scrolled ? 'px-3 py-2' : 'px-6 py-2'
+      }`}
+      style={{
+        background: isHovered ? 'rgba(138, 28, 38, 1)' : 'rgba(110, 14, 26, 1)',
+        boxShadow: isHovered ? '0 10px 15px -3px rgba(138, 28, 38, 0.4), 0 4px 6px -4px rgba(138, 28, 38, 0.4)' : 'none'
+      }}
+    >
+      <Wallet className={`transition-all duration-1200 ease-in-out ${scrolled ? 'w-4 h-4' : 'w-4 h-4'}`} />
+      <span className={`transition-all duration-1200 ease-in-out whitespace-nowrap overflow-hidden ${
+        scrolled ? 'w-0 opacity-0' : 'w-auto opacity-100'
+      }`}>{children}</span>
+    </button>
+  );
+});
 
 export function Navbar() {
   const [user, setUser] = useState<any>(null)
@@ -73,12 +83,20 @@ export function Navbar() {
         }`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className={`w-10 h-10 rounded-lg bg-gradient-to-br from-[#E1B051]/20 to-[#8A1C26]/20 flex items-center justify-center transition-all duration-1200 ease-in-out ${
-              scrolled ? 'w-8 h-8' : 'w-10 h-10'
-            }`}>
-              <Ticket className={`text-[#E1B051] transition-all duration-1200 ease-in-out ${
-                scrolled ? 'w-4 h-4' : 'w-5 h-5'
-              }`} />
+            <div 
+              className={`rounded-lg flex items-center justify-center transition-all duration-1200 ease-in-out ${
+                scrolled ? 'w-8 h-8' : 'w-10 h-10'
+              }`}
+              style={{
+                background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 0.2), rgba(138, 28, 38, 0.2))'
+              }}
+            >
+              <Ticket 
+                className={`transition-all duration-1200 ease-in-out ${
+                  scrolled ? 'w-4 h-4' : 'w-5 h-5'
+                }`}
+                style={{ color: 'rgba(225, 176, 81, 1)' }}
+              />
             </div>
             <span className={`text-white transition-all duration-1200 ease-in-out ${
               scrolled ? 'text-base' : 'text-lg'
@@ -89,32 +107,38 @@ export function Navbar() {
 
           {/* Navigation Links */}
           <div className={`hidden md:flex items-center transition-all duration-1200 ease-in-out ${
-            scrolled ? 'gap-4' : 'gap-8'
+            scrolled ? 'gap-6' : 'gap-8'
           }`}>
             <Link 
               to="/" 
-              className={`text-gray-300 hover:text-[#E1B051] transition-all duration-1200 ease-in-out whitespace-nowrap ${
+              className={`text-gray-300 transition-all duration-1200 ease-in-out whitespace-nowrap ${
                 scrolled ? 'text-sm' : ''
               }`}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(225, 176, 81, 1)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = ''}
             >
               Accueil
             </Link>
-            <a 
-              href="/#how-it-works" 
-              className={`text-gray-300 hover:text-[#E1B051] transition-all duration-1200 ease-in-out whitespace-nowrap ${
+            <Link 
+              to="/HowitWorksPage" 
+              className={`text-gray-300 transition-all duration-1200 ease-in-out whitespace-nowrap ${
                 scrolled ? 'text-sm' : ''
               }`}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(225, 176, 81, 1)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = ''}
             >
               Comment ça marche
-            </a>
-            <a 
-              href="/#about" 
-              className={`text-gray-300 hover:text-[#E1B051] transition-all duration-1200 ease-in-out whitespace-nowrap ${
+            </Link>
+            <Link 
+              to="/AboutPage" 
+              className={`text-gray-300 transition-all duration-1200 ease-in-out whitespace-nowrap ${
                 scrolled ? 'text-sm' : ''
               }`}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(225, 176, 81, 1)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = ''}
             >
               À propos
-            </a>
+            </Link>
           </div>
 
           {/* CTA Buttons */}
@@ -132,9 +156,18 @@ export function Navbar() {
                 {!isAdmin(user?.email) && (
                   <Link 
                     to="/participate"
-                    className={`bg-gradient-to-r from-[#C18F28] via-[#E1B051] to-[#C18F28] brightness-110 hover:bg-[#E1B051] text-black rounded-full transition-all duration-1200 ease-in-out hover:shadow-lg hover:shadow-[#E1B051]/40 flex items-center gap-2 ${
+                    className={`brightness-110 text-black rounded-full transition-all duration-1200 ease-in-out flex items-center gap-2 ${
                       scrolled ? 'px-3 py-2' : 'px-6 py-2'
                     }`}
+                    style={{
+                      background: 'linear-gradient(to right, rgba(193, 143, 40, 1), rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(225, 176, 81, 0.4), 0 4px 6px -4px rgba(225, 176, 81, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = 'none';
+                    }}
                   >
                     <User className={`transition-all duration-1200 ease-in-out ${scrolled ? 'w-4 h-4' : 'w-4 h-4'}`} />
                     <span className={`transition-all duration-1200 ease-in-out whitespace-nowrap overflow-hidden ${

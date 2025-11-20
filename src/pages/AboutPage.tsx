@@ -1,7 +1,7 @@
 import { Users, MapPin, Calendar, Sparkles, Heart, Gift, Trophy, Music, Utensils } from "lucide-react";
 import { motion } from "motion/react";
-import { Navbar } from "./Navbar";
-import { Footer } from "./Footer";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 interface AboutPageProps {
   onHowItWorksClick: () => void;
@@ -12,7 +12,9 @@ interface AboutPageProps {
 export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: AboutPageProps) {
   return (
     <div className="min-h-screen bg-black text-white">
-      <Navbar />
+      <div style={{height : '140px'}}>
+
+      </div>
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 py-32">
@@ -39,9 +41,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0 * 0.1 }}
-            className="bg-gradient-to-br from-[#6E0E1A]/10 to-[#8A1C26]/10 border border-[#8A1C26]/30 rounded-2xl p-6 backdrop-blur-sm text-center"
+            className="rounded-2xl p-6 backdrop-blur-sm text-center" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 0.1), rgba(138, 28, 38, 0.1))', border: '1px solid rgba(138, 28, 38, 0.3)' }}
           >
-            <Calendar className="w-12 h-12 text-[#8A1C26] mx-auto mb-4" />
+            <Calendar className="w-12 h-12 mx-auto mb-4" style={{ color: 'rgba(138, 28, 38, 1)' }} />
             <h3 className="text-xl mb-2">Dates</h3>
             <p className="text-gray-400">28, 29 & 30 Novembre 2025</p>
           </motion.div>
@@ -50,9 +52,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 1 * 0.1 }}
-            className="bg-gradient-to-br from-[#6E0E1A]/10 to-[#8A1C26]/10 border border-[#8A1C26]/30 rounded-2xl p-6 backdrop-blur-sm text-center"
+            className="rounded-2xl p-6 backdrop-blur-sm text-center" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 0.1), rgba(138, 28, 38, 0.1))', border: '1px solid rgba(138, 28, 38, 0.3)' }}
           >
-            <MapPin className="w-12 h-12 text-[#8A1C26] mx-auto mb-4" />
+            <MapPin className="w-12 h-12 mx-auto mb-4" style={{ color: 'rgba(138, 28, 38, 1)' }} />
             <h3 className="text-xl mb-2">Lieu</h3>
             <p className="text-gray-400">Campus Universitaire<br />Hall Principal</p>
           </motion.div>
@@ -61,9 +63,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 2 * 0.1 }}
-            className="bg-gradient-to-br from-[#6E0E1A]/10 to-[#8A1C26]/10 border border-[#8A1C26]/30 rounded-2xl p-6 backdrop-blur-sm text-center"
+            className="rounded-2xl p-6 backdrop-blur-sm text-center" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 0.1), rgba(138, 28, 38, 0.1))', border: '1px solid rgba(138, 28, 38, 0.3)' }}
           >
-            <Users className="w-12 h-12 text-[#8A1C26] mx-auto mb-4" />
+            <Users className="w-12 h-12 mx-auto mb-4" style={{ color: 'rgba(138, 28, 38, 1)' }} />
             <h3 className="text-xl mb-2">Organisateurs</h3>
             <p className="text-gray-400">Etherbay Team<br />& Partenaires</p>
           </motion.div>
@@ -78,9 +80,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
           className="mb-16 pb-30"
         >
           <h2 className="text-4xl mb-8 pt-10 text-center">Qui sommes-nous ?</h2>
-          <div className="bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/20 rounded-2xl p-8 backdrop-blur-sm">
+          <div className="rounded-2xl p-8 backdrop-blur-sm" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.2)' }}>
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              La ville d'<span className="text-[#E1B051]">Etherbay</span> organise une grande loterie. Le but ? Démocratiser l'accès à la cryptomonnaie en organisant un événement éducatif, ludique mais surtout caritatif.
+              La ville d'<span style={{ color: 'rgba(225, 176, 81, 1)' }}>Etherbay</span> organise une grande loterie. Le but ? Démocratiser l'accès à la cryptomonnaie en organisant un événement éducatif, ludique mais surtout caritatif.
             </p>
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
               Cette loterie caritative est notre projet phare pour initier les étudiants et le grand public à l'univers de la crypto 
@@ -92,9 +94,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="flex items-center gap-3 bg-white/5 rounded-lg p-4"
+                className="flex items-center gap-3 rounded-lg p-4" style={{ background: 'rgba(255, 255, 255, 0.05)' }}
               >
-                <Heart className="w-6 h-6 text-[#E1B051]" />
+                <Heart className="w-6 h-6" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                 <div>
                   <div className="text-2xl">100%</div>
                   <div className="text-sm text-gray-400">Pour la charité</div>
@@ -105,9 +107,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.3 }}
-                className="flex items-center gap-3 bg-white/5 rounded-lg p-4"
+                className="flex items-center gap-3 rounded-lg p-4" style={{ background: 'rgba(255, 255, 255, 0.05)' }}
               >
-                <Trophy className="w-6 h-6 text-[#8A1C26]" />
+                <Trophy className="w-6 h-6" style={{ color: 'rgba(138, 28, 38, 1)' }} />
                 <div>
                   <div className="text-2xl">3 400</div>
                   <div className="text-sm text-gray-400">Prix à gagner</div>
@@ -118,9 +120,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.4 }}
-                className="flex items-center gap-3 bg-white/5 rounded-lg p-4"
+                className="flex items-center gap-3 rounded-lg p-4" style={{ background: 'rgba(255, 255, 255, 0.05)' }}
               >
-                <Sparkles className="w-6 h-6 text-[#E1B051]" />
+                <Sparkles className="w-6 h-6" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                 <div>
                   <div className="text-2xl">100%</div>
                   <div className="text-sm text-gray-400">Transparent</div>
@@ -138,13 +140,13 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl mb-8 p-[0px] text-center">Les stands présents</h2>
-            <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+            <h2 className="text-4xl mb-8 p-[0px] text-center" >Les stands présents</h2>
+            <p className="text-center text-gray-400max-w-2xl mx-auto" >
               Venez découvrir nos stands partenaires et profitez d'une expérience complète lors de l'événement !
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6" style={{marginTop : '40px'}}>
             {/* Crypto Education Stand */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -153,9 +155,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 0 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border-[#E1B051]/30 border rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#E1B051] to-[#C18F28] rounded-lg flex items-center justify-center mb-4">
-                  <Sparkles className="w-7 h-7 text-black" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.3)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))' }}>
+                  <Sparkles className="w-7 h-7" style={{ color: 'rgba(0, 0, 0, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Initiation Crypto</h3>
                 <p className="text-gray-400 text-sm">
@@ -172,9 +174,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 1 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#6E0E1A]/50 rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#6E0E1A] to-[#8A1C26] rounded-lg flex items-center justify-center mb-4">
-                  <Gift className="w-7 h-7 text-white" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(110, 14, 26, 0.5)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 1), rgba(138, 28, 38, 1))' }}>
+                  <Gift className="w-7 h-7" style={{ color: 'rgba(255, 255, 255, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Galerie NFT</h3>
                 <p className="text-gray-400 text-sm">
@@ -191,9 +193,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 2 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/30 rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#E1B051] to-[#C18F28] rounded-lg flex items-center justify-center mb-4">
-                  <Trophy className="w-7 h-7 text-black" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.3)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))' }}>
+                  <Trophy className="w-7 h-7" style={{ color: 'rgba(0, 0, 0, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Zone Gaming</h3>
                 <p className="text-gray-400 text-sm">
@@ -210,9 +212,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 3 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#6E0E1A]/50 rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#6E0E1A] to-[#8A1C26] rounded-lg flex items-center justify-center mb-4">
-                  <Music className="w-7 h-7 text-white" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(110, 14, 26, 0.5)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 1), rgba(138, 28, 38, 1))' }}>
+                  <Music className="w-7 h-7" style={{ color: 'rgba(255, 255, 255, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Musique Live</h3>
                 <p className="text-gray-400 text-sm">
@@ -229,9 +231,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 4 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/30 rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#E1B051] to-[#C18F28] rounded-lg flex items-center justify-center mb-4">
-                  <Utensils className="w-7 h-7 text-black" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.3)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))' }}>
+                  <Utensils className="w-7 h-7" style={{ color: 'rgba(0, 0, 0, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Food & Boissons</h3>
                 <p className="text-gray-400 text-sm">
@@ -248,9 +250,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               transition={{ duration: 0.5, delay: 5 * 0.1 }}
               className="relative"
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#6E0E1A]/50 rounded-2xl p-6 backdrop-blur-sm h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-[#6E0E1A] to-[#8A1C26] rounded-lg flex items-center justify-center mb-4">
-                  <Heart className="w-7 h-7 text-white" />
+              <div className="relative rounded-2xl p-6 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(110, 14, 26, 0.5)' }}>
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 1), rgba(138, 28, 38, 1))' }}>
+                  <Heart className="w-7 h-7" style={{ color: 'rgba(255, 255, 255, 1)' }} />
                 </div>
                 <h3 className="text-xl mb-3">Stand Associations</h3>
                 <p className="text-gray-400 text-sm">
@@ -286,11 +288,11 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0 * 0.2, ease: "easeOut" }}
-              className="bg-gradient-to-br from-[#C18F28]/5 to-[#E1B051]/5 border border-[#E1B051]/20 rounded-2xl p-6"
+              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
               <div className="mb-6 pb-6 border-b border-gray-800">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-5xl text-[#E1B051]">28</span>
+                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>28</span>
                   <div>
                     <div className="text-white">Novembre</div>
                     <div className="text-sm text-gray-400">Jeudi</div>
@@ -299,9 +301,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               </div>
               
               <div className="space-y-4">
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">14:00</div>
@@ -310,9 +312,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">15:30</div>
@@ -321,25 +323,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">17:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>17:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Tirage au sort #1</h4>
                     <p className="text-xs text-gray-500">Annonce des premiers gagnants de la loterie</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">18:00</div>
@@ -348,25 +350,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">20:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>20:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Tirage au sort #2</h4>
                     <p className="text-xs text-gray-500">Deuxième série de gagnants révélée</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800">
+                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">21:00</div>
@@ -383,11 +385,11 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 1 * 0.2, ease: "easeOut" }}
-              className="bg-gradient-to-br from-[#C18F28]/5 to-[#E1B051]/5 border border-[#E1B051]/20 rounded-2xl p-6"
+              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
               <div className="mb-6 pb-6 border-b border-gray-800">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-5xl text-[#E1B051]">29</span>
+                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>29</span>
                   <div>
                     <div className="text-white">Novembre</div>
                     <div className="text-sm text-gray-400">Vendredi</div>
@@ -396,9 +398,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               </div>
               
               <div className="space-y-4">
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">10:00</div>
@@ -407,9 +409,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">11:00</div>
@@ -418,25 +420,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">12:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Tirage au sort #3</h4>
                     <p className="text-xs text-gray-500">Nouveaux gagnants annoncés en direct</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">14:30</div>
@@ -445,9 +447,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">16:00</div>
@@ -456,25 +458,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">19:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Tirage au sort #4</h4>
                     <p className="text-xs text-gray-500">Quatrième vague de gagnants</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800">
+                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">20:30</div>
@@ -491,11 +493,11 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 2 * 0.2, ease: "easeOut" }}
-              className="bg-gradient-to-br from-[#C18F28]/5 to-[#E1B051]/5 border border-[#E1B051]/20 rounded-2xl p-6"
+              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
               <div className="mb-6 pb-6 border-b border-gray-800">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-5xl text-[#E1B051]">30</span>
+                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>30</span>
                   <div>
                     <div className="text-white">Novembre</div>
                     <div className="text-sm text-gray-400">Samedi</div>
@@ -504,9 +506,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               </div>
               
               <div className="space-y-4">
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">10:00</div>
@@ -515,9 +517,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">11:00</div>
@@ -526,25 +528,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">12:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Tirage au sort #5</h4>
                     <p className="text-xs text-gray-500">Avant-dernière série de gagnants</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">14:00</div>
@@ -553,9 +555,9 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800 pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">16:00</div>
@@ -564,25 +566,25 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-[#C18F28] pb-4">
+                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-[#C18F28] flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-black" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
+                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
                   <div className="ml-6">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm text-[#E1B051]">19:00</span>
-                      <Trophy className="w-4 h-4 text-[#E1B051]" />
+                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
+                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
                     <h4 className="text-sm text-white mb-1">Grand Tirage Final</h4>
                     <p className="text-xs text-gray-500">Derniers gagnants et clôture de la loterie</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 border-l-2 border-gray-800">
+                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
                   <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center" />
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
                   <div className="ml-6">
                     <div className="text-sm text-gray-400 mb-1">20:00</div>
@@ -601,12 +603,12 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-center mt-12"
           >
-            <p className="text-white mb-4">
+            <p className="text-white mb-4" style={{marginTop : "80px"}}>
               Tous les tirages sont diffusés en direct sur place
             </p>
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#B3841B]/40 bg-gradient-to-r from-[#C18F28]/40 via-[#E1B051]/40 to-[#C18F28]/40">
-              <Trophy className="w-5 h-5 text-[#B3841B]" />
-              <span className="text-white">6 tirages au sort sur 3 jours</span>
+            <div className="inline-flex items-center gap-2 rounded-full" style={{ border: '1px solid rgba(179, 132, 27, 0.4)', background: 'linear-gradient(to right, rgba(193, 143, 40, 0.4), rgba(225, 176, 81, 0.4), rgba(193, 143, 40, 0.4))', marginBottom : '200px', paddingLeft : '20px', paddingRight : '20px', paddingTop : '10px', paddingBottom : '10px' }}>
+              <Trophy className="w-5 h-5" style={{ color: 'rgba(179, 132, 27, 1)' }} />
+              <span className="text-white px-5 py-6">6 tirages au sort sur 3 jours</span>
             </div>
           </motion.div>
         </div>

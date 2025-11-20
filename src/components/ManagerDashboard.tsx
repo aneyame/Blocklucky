@@ -144,11 +144,11 @@ export function ManagerDashboard({ onBack }: { onBack: () => void }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Card className="bg-gradient-to-br from-gray-900/80 to-black border-[#E1B051]/20 p-6">
             <div className="flex items-start justify-between mb-4">
-              <div className="w-12 h-12 rounded-lg bg-[#E1B051]/10 border border-[#E1B051]/30 flex items-center justify-center">
-                <Users className="w-6 h-6 text-[#E1B051]" />
+              <div className="w-12 h-8 rounded-lg bg-[#E1B051]/10 border border-[#E1B051]/30 flex items-center justify-center ">
+                <Users className="w-6 h-8 text-[#E1B051]" />
               </div>
             </div>
-            <p className="text-gray-400 text-sm mb-1">Total de donations</p>
+            <p className="text-sm mb-1" style={{ color: 'rgba(156, 163, 175, 1)' }}>Total de donations</p>
             <p className="text-3xl text-white">{stats.totalDonations.toLocaleString()}</p>
           </Card>
 

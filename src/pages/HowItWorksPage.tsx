@@ -1,5 +1,4 @@
 import { Wallet, Shield, Coins, Globe, Download, Key, CheckCircle } from "lucide-react";
-import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { motion } from "framer-motion";
 
@@ -9,10 +8,12 @@ interface HowItWorksPageProps {
   onDonationClick?: () => void;
 }
 
-export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: HowItWorksPageProps) {
+export function HowItWorksPage({ onAboutClick }: HowItWorksPageProps) {
   return (
     <div className="min-h-screen bg-black text-white">
-      <Navbar />
+      <div style={{height : '140px'}}>
+
+      </div>
 
       {/* Main Content */}
       <motion.div 
@@ -53,15 +54,15 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/20 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E1B051] to-[#C18F28] rounded-xl flex items-center justify-center mb-6">
-                  <Coins className="w-8 h-8 text-black" />
+              <div className="relative rounded-2xl p-8 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.2)' }}>
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{ background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))' }}>
+                  <Coins className="w-8 h-8" style={{ color: 'rgba(0, 0, 0, 1)' }} />
                 </div>
                 <h3 className="text-2xl mb-4">C'est quoi exactement ?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   La cryptomonnaie, c'est de l'argent numérique. Comme les euros dans votre compte bancaire, mais sans banque ! 
-                  C'est vous qui contrôlez totalement votre argent. La plus connue s'appelle <span className="text-[#E1B051]">Bitcoin</span>, 
-                  mais nous on utilise l'<span className="text-[#E1B051]">Ethereum (ETH)</span>.
+                  C'est vous qui contrôlez totalement votre argent. La plus connue s'appelle <span style={{ color: 'rgba(225, 176, 81, 1)' }}>Bitcoin</span>, 
+                  mais nous on utilise l'<span style={{ color: 'rgba(225, 176, 81, 1)' }}>Ethereum (ETH)</span>.
                 </p>
               </div>
             </motion.div>
@@ -73,13 +74,13 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#8A1C26]/30 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#6E0E1A] to-[#8A1C26] rounded-xl flex items-center justify-center mb-6">
-                  <Shield className="w-8 h-8 text-white" />
+              <div className="relative rounded-2xl p-8 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(138, 28, 38, 0.3)' }}>
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 1), rgba(138, 28, 38, 1))' }}>
+                  <Shield className="w-8 h-8" style={{ color: 'rgba(255, 255, 255, 1)' }} />
                 </div>
                 <h3 className="text-2xl mb-4">Pourquoi c'est sécurisé ?</h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Toutes les transactions sont enregistrées sur la <span className="text-[#8A1C26]">blockchain</span> - 
+                  Toutes les transactions sont enregistrées sur la <span style={{ color: 'rgba(138, 28, 38, 1)' }}>blockchain</span> - 
                   c'est comme un grand livre de comptes public que personne ne peut modifier ou falsifier. 
                   C'est transparent, vérifiable et ultra-sécurisé !
                 </p>
@@ -93,9 +94,9 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/20 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E1B051] to-[#C18F28] rounded-xl flex items-center justify-center mb-6">
-                  <Globe className="w-8 h-8 text-black" />
+              <div className="relative rounded-2xl p-8 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(225, 176, 81, 0.2)' }}>
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{ background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))' }}>
+                  <Globe className="w-8 h-8" style={{ color: 'rgba(0, 0, 0, 1)' }} />
                 </div>
                 <h3 className="text-2xl mb-4">Comment ça marche ?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -112,9 +113,9 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <div className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#8A1C26]/30 rounded-2xl p-8 backdrop-blur-sm h-full">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#6E0E1A] to-[#8A1C26] rounded-xl flex items-center justify-center mb-6">
-                  <Wallet className="w-8 h-8 text-white" />
+              <div className="relative rounded-2xl p-8 backdrop-blur-sm h-full" style={{ background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))', border: '1px solid rgba(138, 28, 38, 0.3)' }}>
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-6" style={{ background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 1), rgba(138, 28, 38, 1))' }}>
+                  <Wallet className="w-8 h-8" style={{ color: 'rgba(255, 255, 255, 1)' }} />
                 </div>
                 <h3 className="text-2xl mb-4">C'est quoi un wallet ?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -133,7 +134,7 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9 }}
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 mt-16">
             <h2 className="text-4xl mb-4">Créer votre premier wallet</h2>
             <p className="text-gray-400 text-lg">
               On vous recommande MetaMask - c'est simple, gratuit et sécurisé !
@@ -143,21 +144,21 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
           <div className="space-y-6 max-w-4xl mx-auto">
             {/* Step 1 */}
             <motion.div 
-              className="flex gap-6 items-start"
+              className="flex gap-6 items-center"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
             >
-              <div className="flex-shrink-0 w-12 h-12 bg-[#03BD6C] rounded-full flex items-center justify-center text-black text-xl">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl" style={{ background: 'rgba(3, 189, 108, 1)', color: 'rgba(0, 0, 0, 1)' }}>
                 1
               </div>
               <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
                 <div className="flex items-center gap-3 mb-3">
-                  <Download className="w-5 h-5 text-[#03BD6C]" />
+                  <Download className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
                   <h3 className="text-xl">Téléchargez MetaMask</h3>
                 </div>
                 <p className="text-gray-400">
-                  Allez sur <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" className="text-[#03BD6C] hover:underline">metamask.io</a> et 
+                  Allez sur <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'rgba(3, 189, 108, 1)' }}>metamask.io</a> et 
                   téléchargez l'extension pour votre navigateur (Chrome, Firefox, Brave...). C'est 100% gratuit !
                 </p>
               </div>
@@ -165,17 +166,17 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
 
             {/* Step 2 */}
             <motion.div 
-              className="flex gap-6 items-start"
+              className="flex gap-6 items-center"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.1 }}
             >
-              <div className="flex-shrink-0 w-12 h-12 bg-[#03BD6C] rounded-full flex items-center justify-center text-black text-xl">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl" style={{ background: 'rgba(3, 189, 108, 1)', color: 'rgba(0, 0, 0, 1)' }}>
                 2
               </div>
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <div className="flex-1 rounded-xl p-6 backdrop-blur-sm" style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <div className="flex items-center gap-3 mb-3">
-                  <Wallet className="w-5 h-5 text-[#03BD6C]" />
+                  <Wallet className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
                   <h3 className="text-xl">Créez votre wallet</h3>
                 </div>
                 <p className="text-gray-400">
@@ -187,17 +188,17 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
 
             {/* Step 3 */}
             <motion.div 
-              className="flex gap-6 items-start"
+              className="flex gap-6 items-center"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
-              <div className="flex-shrink-0 w-12 h-12 bg-[#03BD6C] rounded-full flex items-center justify-center text-black text-xl">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl" style={{ background: 'rgba(3, 189, 108, 1)', color: 'rgba(0, 0, 0, 1)' }}>
                 3
               </div>
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <div className="flex-1 rounded-xl p-6 backdrop-blur-sm" style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <div className="flex items-center gap-3 mb-3">
-                  <Key className="w-5 h-5 text-[#03BD6C]" />
+                  <Key className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
                   <h3 className="text-xl">Sauvegardez votre phrase secrète</h3>
                 </div>
                 <p className="text-gray-400 mb-3">
@@ -205,8 +206,8 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
                   <span className="text-red-400"> TRÈS IMPORTANT</span> : notez-les sur papier et gardez-les en sécurité. 
                   Ne les partagez JAMAIS avec personne !
                 </p>
-                <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
-                  <p className="text-red-300 text-sm">
+                <div className="rounded-lg p-4" style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
+                  <p className="text-sm" style={{ color: 'rgba(252, 165, 165, 1)' }}>
                     ⚠️ Si vous perdez ces mots, vous perdez l'accès à votre wallet pour toujours. 
                     Si quelqu'un les obtient, il peut voler tout votre argent !
                   </p>
@@ -216,17 +217,17 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
 
             {/* Step 4 */}
             <motion.div 
-              className="flex gap-6 items-start"
+              className="flex gap-6 items-center"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1.3 }}
             >
-              <div className="flex-shrink-0 w-12 h-12 bg-[#03BD6C] rounded-full flex items-center justify-center text-black text-xl">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-xl" style={{ background: 'rgba(3, 189, 108, 1)', color: 'rgba(0, 0, 0, 1)' }}>
                 4
               </div>
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+              <div className="flex-1 rounded-xl p-6 backdrop-blur-sm" style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="w-5 h-5 text-[#03BD6C]" />
+                  <CheckCircle className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
                   <h3 className="text-xl">C'est prêt !</h3>
                 </div>
                 <p className="text-gray-400">
@@ -240,7 +241,8 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
 
         {/* Additional Info */}
         <motion.div 
-          className="bg-gradient-to-br from-[#03BD6C]/10 to-[#6E0E1A]/10 border border-[#03BD6C]/20 rounded-2xl p-8 backdrop-blur-sm"
+          className="rounded-2xl p-8 backdrop-blur-sm mt-16 mb-16"
+          style={{ background: 'linear-gradient(to bottom right, rgba(3, 189, 108, 0.1), rgba(110, 14, 26, 0.1))', border: '1px solid rgba(3, 189, 108, 0.2)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.4 }}
@@ -250,16 +252,16 @@ export function HowItWorksPage({ onAboutClick, onHomeClick, onDonationClick }: H
             Pas de stress ! Notre équipe sera présente lors de l'événement les 28, 29 et 30 novembre pour vous aider 
             à créer votre wallet et faire votre première donation. On est là pour vous accompagner !
           </p>
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 text-[#03BD6C]">
+          <div className="flex flex-wrap gap-8">
+            <div className="flex items-center gap-2" style={{ color: 'rgba(3, 189, 108, 1)' }}>
               <CheckCircle className="w-5 h-5" />
               <span>Assistance en direct</span>
             </div>
-            <div className="flex items-center gap-2 text-[#03BD6C]">
+            <div className="flex items-center gap-2" style={{ color: 'rgba(3, 189, 108, 1)' }}>
               <CheckCircle className="w-5 h-5" />
               <span>Tutoriels vidéo</span>
             </div>
-            <div className="flex items-center gap-2 text-[#03BD6C]">
+            <div className="flex items-center gap-2" style={{ color: 'rgba(3, 189, 108, 1)' }}>
               <CheckCircle className="w-5 h-5" />
               <span>Guide pas à pas</span>
             </div>

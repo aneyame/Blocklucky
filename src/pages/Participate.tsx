@@ -5,19 +5,30 @@ import { getConnectedAccount, getEthersProvider, CONTRACT_ADDRESS, subscribeToWa
 import { supabase } from "../lib/supabase"
 import LotteryABI from "../lib/LotteryABI.json"
 import jsPDF from "jspdf"
+import { Wallet, Heart, Trophy, Shield, ArrowRight, Check, Sparkles } from "lucide-react";
+import { motion } from "motion/react";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+
+
 
 export function Participate() {
   const navigate = useNavigate()
   const [account, setAccount] = useState<string | null>(null)
   const [userEmail, setUserEmail] = useState<string | null>(null)
   const [walletAssociated, setWalletAssociated] = useState<boolean | null>(null)
-  const [amount, setAmount] = useState("0.00000001")
   const [ticketPrice, setTicketPrice] = useState<string>("")
   const [balance, setBalance] = useState<string>("")
   const [isLoading, setIsLoading] = useState(false)
   const [isAssociating, setIsAssociating] = useState(false)
   const [ticketsBought, setTicketsBought] = useState<number>(0)
   const [totalDonations, setTotalDonations] = useState<string>("0")
+
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [customAmount, setCustomAmount] = useState("");
+
+  const predefinedAmounts = [10, 25, 50, 100, 250, 500];
+
 
   // Fonction pour générer le PDF des tickets
   const generateTicketPDF = (ticketNumbers: number[], email: string, wallet: string, purchaseDate: string) => {
@@ -235,6 +246,17 @@ export function Participate() {
       return
     }
 
+    // Convertir le montant en € vers SepoliaETH (10€ = 0.00000001 ETH)
+    const euroAmount = selectedAmount || parseFloat(customAmount)
+    if (!euroAmount || euroAmount <= 0) {
+      alert("Veuillez sélectionner un montant valide")
+      return
+    }
+    
+    // Conversion : 10€ = 0.00000001 ETH, donc 1€ = 0.000000001 ETH
+    const ethAmount = (euroAmount / 10) * 0.00000001
+    const ethAmountString = ethAmount.toFixed(18) // Précision maximale
+
     setIsLoading(true)
     try {
       const signer = await ethersProvider.getSigner()
@@ -245,7 +267,7 @@ export function Participate() {
       )
 
       const tx = await contract.buyTicket({
-        value: ethers.parseEther(amount),
+        value: ethers.parseEther(ethAmountString),
       })
 
       alert("Transaction en cours... Veuillez patienter.")
@@ -281,13 +303,17 @@ export function Participate() {
           // Générer le PDF
           generateTicketPDF(ticketNumbers, email, account!, purchaseDate)
           
-          alert(`Ticket(s) acheté(s) avec succès !\n\nVos numéros de tickets: ${ticketNumbers.join(", ")}\n\nLe PDF a été ouvert dans un nouvel onglet.`)
+          alert(`Don de ${euroAmount}€ effectué avec succès !\n\nVos numéros de tickets: ${ticketNumbers.join(", ")}\n\nLe PDF a été ouvert dans un nouvel onglet.`)
         } else {
-          alert("Ticket acheté avec succès !")
+          alert(`Don de ${euroAmount}€ effectué avec succès !`)
         }
+        
+        // Réinitialiser le formulaire
+        setSelectedAmount(null)
+        setCustomAmount("")
       } catch (pdfError) {
         console.error("Erreur lors de la génération du PDF:", pdfError)
-        alert("Ticket acheté avec succès !\n(Erreur lors de la génération du PDF)")
+        alert(`Don de ${euroAmount}€ effectué avec succès !\n(Erreur lors de la génération du PDF)`)
       }
       
       // Rafraîchir les données après l'achat
@@ -298,12 +324,12 @@ export function Participate() {
       console.error(err)
       
       // Messages d'erreur personnalisés
-      let errorMessage = "Erreur lors de l'achat du ticket"
+      let errorMessage = "Erreur lors du don"
       
       if (err.code === "INSUFFICIENT_FUNDS") {
-        errorMessage = "Fonds insuffisants !"
-      } else if (err.message?.includes("Incorrect ticket price")) {
-        errorMessage = "Le montant doit être exactement 10 gwei (0.00000001 ETH)"
+        errorMessage = "Fonds insuffisants dans votre wallet !"
+      } else if (err.message?.includes("user rejected")) {
+        errorMessage = "Transaction annulée"
       } else if (err.message) {
         errorMessage = err.message
       }
@@ -315,54 +341,59 @@ export function Participate() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
-      <div className="max-w-2xl mx-auto">
-        {/* Bouton retour */}
-        <button
-          onClick={() => navigate("/")}
-          className="mb-8 px-4 py-2 text-lime-400 border border-lime-400 rounded-lg hover:bg-lime-400/10 transition-colors"
-        >
-          ← Retour
-        </button>
-
-        <h1 className="text-4xl font-bold mb-8 text-lime-400">Participer à la loterie</h1>
-
-        {/* Cas 1: Wallet non connecté */}
-        {!account && (
-          <div className="bg-orange-500/10 border-2 border-orange-500 rounded-lg p-8 text-center">
-            <span className="text-5xl mb-4 block">⚠️</span>
-            <h2 className="text-2xl font-bold text-orange-400 mb-3">Wallet non connecté</h2>
-            <p className="text-gray-300 mb-6">
-              Vous devez d'abord connecter votre wallet MetaMask pour participer à la loterie.
+    <div className="min-h-screen bg-black text-white pt-28 pb-12">
+      {/* Spacer Section */}
+      <div className="bg-black" style={{ height: '150px' }}></div>
+      
+      {/* Cas 1: Wallet non connecté */}
+      {!account && (
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="rounded-2xl p-8 text-center" style={{
+            background: 'linear-gradient(to bottom right, rgba(251, 146, 60, 0.1), rgba(234, 88, 12, 0.1))',
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            borderColor: 'rgba(249, 115, 22, 1)'
+          }}>
+            <span className="text-6xl mb-4 block">⚠️</span>
+            <h2 className="text-3xl font-bold mb-3" style={{ color: 'rgba(251, 146, 60, 1)' }}>Wallet non connecté</h2>
+            <p className="text-gray-300 mb-6 text-lg">
+              Vous devez d'abord connecter votre wallet MetaMask pour faire un don et participer à la loterie.
             </p>
             <p className="text-sm text-gray-400">
-              Cliquez sur "Connecter mon wallet" dans la barre de navigation
+              Cliquez sur "Connecter mon wallet" dans la barre de navigation en haut de la page
             </p>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Cas 2: Wallet connecté mais non associé */}
-        {account && walletAssociated === false && (
-          <div className="bg-gradient-to-br from-purple-900/50 to-indigo-900/50 border-2 border-purple-500 rounded-xl p-8">
+      {/* Cas 2: Wallet connecté mais non associé */}
+      {account && walletAssociated === false && (
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="rounded-2xl p-8" style={{
+            background: 'linear-gradient(to bottom right, rgba(147, 51, 234, 0.2), rgba(124, 58, 237, 0.2))',
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            borderColor: 'rgba(168, 85, 247, 1)'
+          }}>
             <div className="text-center mb-6">
-              <span className="text-5xl mb-4 block">🔗</span>
-              <h2 className="text-3xl font-bold text-lime-400 mb-2">Association de votre wallet</h2>
+              <span className="text-6xl mb-4 block">🔗</span>
+              <h2 className="text-3xl font-bold mb-2" style={{ color: 'rgba(225, 176, 81, 1)' }}>Association de votre wallet</h2>
               <p className="text-gray-300">
                 Pour participer, associez votre wallet à votre compte
               </p>
             </div>
 
-            <div className="bg-black/40 rounded-lg p-6 mb-6 space-y-4">
+            <div className="rounded-lg p-6 mb-6 space-y-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}>
               <div className="flex items-center gap-3">
-                <span className="text-2xl">✉️</span>
+                <span className="text-3xl">✉️</span>
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
                   <p className="text-white font-mono">{userEmail}</p>
                 </div>
               </div>
-              <div className="h-px bg-gray-700"></div>
+              <div style={{ height: '1px', backgroundColor: 'rgba(55, 65, 81, 1)' }}></div>
               <div className="flex items-center gap-3">
-                <span className="text-2xl">💼</span>
+                <span className="text-3xl">💼</span>
                 <div>
                   <p className="text-sm text-gray-400">Wallet détecté</p>
                   <p className="text-white font-mono text-sm break-all">{account}</p>
@@ -373,7 +404,13 @@ export function Participate() {
             <button
               onClick={handleAssociateWallet}
               disabled={isAssociating}
-              className="w-full bg-lime-400 text-black font-bold py-4 px-6 rounded-lg hover:bg-lime-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+              className="w-full font-bold py-4 px-6 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+              style={{
+                background: isAssociating ? 'rgba(132, 204, 22, 0.7)' : 'rgba(132, 204, 22, 1)',
+                color: 'rgba(0, 0, 0, 1)'
+              }}
+              onMouseEnter={(e) => !isAssociating && (e.currentTarget.style.background = 'rgba(163, 230, 53, 1)')}
+              onMouseLeave={(e) => !isAssociating && (e.currentTarget.style.background = 'rgba(132, 204, 22, 1)')}
             >
               {isAssociating ? "Association en cours..." : "✓ Confirmer et participer"}
             </button>
@@ -382,107 +419,304 @@ export function Participate() {
               Cette association est permanente et ne peut pas être modifiée
             </p>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Cas 3: Tout est OK - Page de participation normale */}
-        {account && walletAssociated === true && (
-          <>
-            {/* Statut du wallet */}
-            <div className="bg-gray-900 rounded-lg p-6 mb-6">
-              <h2 className="text-xl font-semibold mb-4">Statut du Wallet</h2>
-              <div>
-                <p className="text-green-400 mb-2">✓ Wallet connecté</p>
-                <p className="text-gray-400 text-sm font-mono mb-2">
-                  {account}
+      {/* Cas 3: Tout est OK - Formulaire de don */}
+      {account && walletAssociated === true && (
+        <>
+          {/* Hero Section */}
+          <div className="relative pb-20 px-6 overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(225, 176, 81, 0.1)' }} />
+              <div className="absolute bottom-20 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(138, 28, 38, 0.1)' }} />
+            </div>
+
+            <div className="max-w-6xl mx-auto relative">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-12"
+              >
+                <h1 className="text-5xl md:text-6xl mb-6 drop-shadow-[0_0_30px_rgba(225,176,81,0.5)] text-[48px]">
+                  Faire un don
+                </h1>
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto text-[16px] mb-8">
+                  Soutenir une cause caritative et participer à une loterie, c'est gagner à tous les niveaux
                 </p>
-                {balance && (
-                  <p className="text-lg mt-2">
-                    <span className="text-gray-400">Solde : </span>
-                    <span className="text-white font-semibold">{parseFloat(balance).toFixed(6)} SepoliaETH</span>
+              </motion.div>
+
+              {/* Impact Stats */}
+              <div className="grid md:grid-cols-3 gap-6 mb-16">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="rounded-2xl p-6 text-center"
+                  style={{
+                    background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 0.1), rgba(193, 143, 40, 0.1))',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(225, 176, 81, 0.3)'
+                  }}
+                >
+                  <Heart className="w-16 h-16 mx-auto mb-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div className="text-3xl mb-2">100%</div>
+                  <div className="text-gray-400">Pour la charité</div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="rounded-2xl p-6 text-center"
+                  style={{
+                    background: 'linear-gradient(to bottom right, rgba(110, 14, 26, 0.1), rgba(138, 28, 38, 0.1))',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(138, 28, 38, 0.3)'
+                  }}
+                >
+                  <Trophy className="w-16 h-16 mx-auto mb-4" style={{ color: 'rgba(138, 28, 38, 1)' }} />
+                  <div className="text-3xl mb-2">3 400€</div>
+                  <div className="text-gray-400">Prix à gagner au total</div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="rounded-2xl p-6 text-center"
+                  style={{
+                    background: 'linear-gradient(to bottom right, rgba(225, 176, 81, 0.1), rgba(193, 143, 40, 0.1))',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(225, 176, 81, 0.3)'
+                  }}
+                >
+                  <Shield className="w-16 h-16 mx-auto mb-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div className="text-3xl mb-2">100%</div>
+                  <div className="text-gray-400">Transparent & Sécurisé</div>
+                </motion.div>
+              </div>
+
+              {/* Donation Form */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="max-w-2xl mx-auto"
+              >
+                <div className="bg-gradient-to-br from-gray-900/80 to-black rounded-2xl p-8 backdrop-blur-sm" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+                  <h2 className="text-2xl mb-6 text-center">Choisissez votre montant</h2>
+                  
+                  {/* Predefined Amounts */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 mb-6" style={{ gap: '1rem' }}>
+                    {predefinedAmounts.map((amount) => (
+                      <button
+                        key={amount}
+                        onClick={() => {
+                          setSelectedAmount(amount);
+                          setCustomAmount("");
+                        }}
+                        disabled={isLoading}
+                        className="relative p-4 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{
+                          borderWidth: '2px',
+                          borderStyle: 'solid',
+                          borderColor: selectedAmount === amount ? 'rgba(225, 176, 81, 1)' : 'rgba(75, 85, 99, 1)',
+                          backgroundColor: selectedAmount === amount ? 'rgba(225, 176, 81, 0.1)' : 'rgba(31, 41, 55, 0.5)'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (selectedAmount !== amount && !isLoading) {
+                            e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.5)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (selectedAmount !== amount) {
+                            e.currentTarget.style.borderColor = 'rgba(75, 85, 99, 1)';
+                          }
+                        }}
+                      >
+                        <div className="text-2xl">{amount}€</div>
+                        {selectedAmount === amount && (
+                          <Check className="absolute top-1/2 left-3 -translate-y-1/2 w-6 h-6" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Custom Amount */}
+                  <div className="mb-8">
+                    <label className="block text-sm text-gray-400 mb-2 p-2 rounded" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(55, 65, 81, 1)' }}>
+                      Ou entrez un montant personnalisé
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        value={customAmount}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (value === '' || parseFloat(value) >= 0) {
+                            setCustomAmount(value);
+                            setSelectedAmount(null);
+                          }
+                        }}
+                        disabled={isLoading}
+                        placeholder="Montant personnalisé"
+                        min="0.50"
+                        step="0.1"
+                        className="w-full px-4 py-3 rounded-xl focus:outline-none transition-colors h-10 disabled:opacity-50 disabled:cursor-not-allowed"
+                        style={{
+                          backgroundColor: 'rgba(31, 41, 55, 0.5)',
+                          borderWidth: '1px',
+                          borderStyle: 'solid',
+                          borderColor: 'rgba(55, 65, 81, 1)'
+                        }}
+                        onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                        onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(55, 65, 81, 1)'}
+                      />
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">€</span>
+                    </div>
+                  </div>
+
+                  {/* Donation Benefits */}
+                  <div className="bg-gradient-to-br from-green-400/20 to-black rounded-xl p-6 mb-6" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+                    <h3 className="text-lg mb-4 flex items-center gap-2">
+                      <Sparkles className="w-5 h-5" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                      Ce que vous obtenez
+                    </h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                        <span className="text-gray-300">Participation automatique à la loterie</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                        <span className="text-gray-300">100% de votre don va directement à une associations caritatives partenaire de l'évènement</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                        <span className="text-gray-300">Reçu fiscal pour votre don (déduction d'impôts)</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                        <span className="text-gray-300">Transaction 100% sécurisée sur la blockchain</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Payment Methods */}
+                  <div className="mb-6">
+                    <h3 className="text-sm text-gray-400 mb-4">Méthodes de paiement acceptées</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        className="flex items-center gap-3 p-4 rounded-xl transition-colors"
+                        style={{
+                          backgroundColor: 'rgba(31, 41, 55, 0.5)',
+                          borderWidth: '1px',
+                          borderStyle: 'solid',
+                          borderColor: 'rgba(55, 65, 81, 1)'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.5)'}
+                        onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(55, 65, 81, 1)'}
+                      >
+                        <Wallet className="w-6 h-6" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                        <div className="text-left">
+                          <div className="text-sm">Crypto Wallet</div>
+                          <div className="text-xs text-gray-500">ETH uniquement</div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button 
+                    onClick={handleBuyTicket}
+                    disabled={(!selectedAmount && !customAmount) || isLoading}
+                    className="w-full flex items-center justify-center gap-3 px-8 py-4 brightness-110 transition-all duration-300 text-black rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      background: 'linear-gradient(to right, rgba(193, 143, 40, 1), rgba(225, 176, 81, 1), rgba(193, 143, 40, 1))'
+                    }}
+                    onMouseEnter={(e) => {
+                      if ((selectedAmount || customAmount) && !isLoading) {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    <span className="text-lg">
+                      {isLoading ? "Transaction en cours..." : `Faire un don ${(selectedAmount || customAmount) ? `de ${selectedAmount || customAmount}€` : ''}`}
+                    </span>
+                    {!isLoading && <ArrowRight className="w-5 h-5" />}
+                  </button>
+
+                  <p className="text-xs text-gray-500 text-center mt-4">
+                    En cliquant sur "Faire un don", vous acceptez nos conditions générales et notre politique de confidentialité.
                   </p>
-                )}
-              </div>
-            </div>
-
-            {/* Statistiques de participation */}
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-gradient-to-br from-lime-900/30 to-green-900/30 border border-lime-500/30 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-3xl">🎟️</span>
-                  <h3 className="text-lg font-semibold text-lime-400">Tickets achetés</h3>
                 </div>
-                <p className="text-4xl font-bold text-white">{ticketsBought}</p>
-                <p className="text-sm text-gray-400 mt-1">pour cette saison</p>
-              </div>
+              </motion.div>
 
-              <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-500/30 rounded-xl p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-3xl">💝</span>
-                  <h3 className="text-lg font-semibold text-purple-400">Dons caritatifs</h3>
+              {/* Trust Indicators */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mt-16 text-center mb-8"
+              >
+                <div className="flex flex-wrap justify-center gap-8 items-center">
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <Shield className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                    <span className="text-sm">Paiement sécurisé SSL</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <Check className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                    <span className="text-sm">100% Transparent</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-400">
+                    <Heart className="w-5 h-5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
+                    <span className="text-sm">100% reversé à la charité</span>
+                  </div>
                 </div>
-                <p className="text-4xl font-bold text-white">{parseFloat(totalDonations).toFixed(8)}</p>
-                <p className="text-sm text-gray-400 mt-1">SepoliaETH donnés</p>
-              </div>
-            </div>
+              </motion.div>
 
-            {/* Informations de la loterie */}
-            {ticketPrice && (
-              <div className="bg-gray-900 rounded-lg p-6 mb-6">
-                <h2 className="text-xl font-semibold mb-4">Prix du ticket</h2>
-                <p className="text-2xl text-lime-400">{ticketPrice} SepoliaETH</p>
-                <p className="text-xl">Vous pouvez acheter jusqu'à 3 tickets</p>
-              </div>
-            )}
-
-        {/* Formulaire de participation */}
-        <div className="bg-gray-900 rounded-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Montant de la participation</h2>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-gray-400 mb-2">
-                Montant (en SepoliaETH)
-              </label>
-              <input
-                type="text"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-lime-400"
-                placeholder="0.00000001"
-              />
-              <p className="text-gray-500 text-sm mt-2">
-                Montant minimum : {ticketPrice || "0.00000001"} SepoliaETH
-              </p>
+              {/* FAQ Mini Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="mt-20 max-w-4xl mx-auto"
+              >
+                <h2 className="text-3xl mb-8 text-center pt-16">Questions fréquentes</h2>
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-br from-gray-900/80 to-black rounded-xl p-6" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+                    <h3 className="text-lg mb-2" style={{ color: 'rgba(225, 176, 81, 1)' }}>Puis-je faire un don sans participer à la loterie ?</h3>
+                    <p className="text-gray-400">
+                      Non, chaque don vous inscrit automatiquement à la loterie. C'est notre façon de vous remercier pour votre générosité !
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-gray-900/80 to-black rounded-xl p-6" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+                    <h3 className="text-lg mb-2" style={{ color: 'rgba(225, 176, 81, 1)' }}>Comment sont utilisés les fonds ?</h3>
+                    <p className="text-gray-400">
+                      100% des dons vont directement aux associations caritatives ! Pas de frais cachés.
+                    </p>
+                  </div>
+                  <div className="bg-gradient-to-br from-gray-900/80 to-black rounded-xl p-6" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
+                    <h3 className="text-lg mb-2" style={{ color: 'rgba(225, 176, 81, 1)' }}>Est-ce que mon don est déductible des impôts ?</h3>
+                    <p className="text-gray-400">
+                      Oui ! Vous recevrez un reçu fiscal vous permettant de déduire 66% de votre don de vos impôts.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </div>
-
-        {/* Bouton d'achat */}
-        <button
-          onClick={handleBuyTicket}
-          disabled={!account || isLoading}
-          className={`w-full py-4 rounded-lg font-semibold text-lg transition-all ${
-            account && !isLoading
-              ? "bg-lime-400 text-black hover:bg-lime-300 hover:shadow-xl hover:shadow-lime-400/20"
-              : "bg-gray-700 text-gray-400 cursor-not-allowed"
-          }`}
-        >
-          {isLoading ? "Transaction en cours..." : "Acheter un ticket"}
-        </button>
-
-            {/* Informations complémentaires */}
-            <div className="mt-8 bg-gray-900 rounded-lg p-6">
-              <h2 className="text-xl font-semibold mb-4">Comment ça marche ?</h2>
-              <ul className="space-y-2 text-gray-400">
-                <li>1. Connectez votre wallet MetaMask</li>
-                <li>2. Entrez le montant que vous souhaitez miser</li>
-                <li>3. Confirmez la transaction dans MetaMask</li>
-                <li>4. Attendez la confirmation sur la blockchain</li>
-                <li>5. Votre ticket est validé !</li>
-              </ul>
-            </div>
-          </>
-        )}
-      </div>
+        </>
+      )}
     </div>
-  )
+  );
 }

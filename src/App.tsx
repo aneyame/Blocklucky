@@ -7,6 +7,9 @@ import { Participate } from "./pages/Participate"
 import { Admin } from "./pages/Admin"
 import { Login } from "./pages/Login"
 import { SignUp } from "./pages/SignUp"
+import { ParticipationPage } from "./pages/ParticipationPage"
+import { HowItWorksPage } from "./pages/HowItWorksPage"
+import { AboutPage } from "./pages/AboutPage"
 
 export default function App() {
   return (
@@ -17,6 +20,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/how-it-works" element={<ParticipationPage onBack={() => window.history.back()} />} />
+          <Route path="/HowitWorksPage" element={<HowItWorksPage onAboutClick={() => {}} onHomeClick={() => {}} />} />
+          <Route path="/AboutPage" element={<AboutPage onHowItWorksClick={() => {}} onHomeClick={() => {}} />} />
           <Route 
             path="/participate" 
             element={
