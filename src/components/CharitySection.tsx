@@ -39,7 +39,9 @@ export function CharitySection() {
   return (
     <section className="relative bg-[#0D0D0D] text-white overflow-hidden py-24 px-16 pt-18px">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-lime-400/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl" style={{
+        backgroundColor: 'rgba(225, 176, 81, 0.1)'
+      }} />
 
         <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
@@ -50,9 +52,12 @@ export function CharitySection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm">
-            <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-            <span className="text-lime-400 text-sm">L'événement</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm" style={{
+            border: '1px solid rgba(225, 176, 81, 1)',
+            background: 'linear-gradient(to right, rgba(193, 143, 40, 0.3), rgba(225, 176, 81, 0.3), rgba(193, 143, 40, 0.3))'
+          }}>
+            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgba(225, 176, 81, 1)' }} />
+            <span className="font-medium text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>L'événement</span>
           </div>
           <h2 className="text-4xl md:text-5xl text-white max-w-3xl mx-auto">
             Une œuvre de charité pour notre ville
@@ -75,10 +80,13 @@ export function CharitySection() {
                   ease: "easeOut" 
                 }}
               >
-                <Card className="relative bg-black group hover:border-lime-400/10 transition-all duration-300 hover:inset-shadow-sm hover: inset-shadow-lime-400/20 p-8 h-full">
+                <Card className="relative bg-black/50 group hover:border-gray-900/10 transition-all duration-300 hover:scale-95 p-8 h-full">
                   {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0D0D0D] mb-6">
-                    <Icon className="w-7 h-7 text-lime-400" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6" style={{
+                    border: '1px solid rgba(225, 176, 81, 1)',
+                    background: 'linear-gradient(to bottom left, rgba(225, 176, 81, 0.4), rgba(193, 143, 40, 0.3))'
+                  }}>
+                    <Icon className="w-7 h-7" stroke="rgba(225, 176, 81, 1)" strokeWidth={2} />
                   </div>
 
                   {/* Content */}

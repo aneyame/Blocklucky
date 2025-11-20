@@ -1,20 +1,19 @@
-import image_9f76aed85e1c9a99b6c8879283140c04f8b1f1d7 from '../assets/9f76aed85e1c9a99b6c8879283140c04f8b1f1d7.png';
+import image_fd9d89968419087df6bd0a5e4e9192dfc76af17d from '../assets/fd9d89968419087df6bd0a5e4e9192dfc76af17d.png';
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/c871b0fdc3cd1f539efdaac6281a3a607b8de5cf.png";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-visible">
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-lime-500/5 via-transparent to-purple-500/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#E1B051]/5 via-transparent to-black pointer-events-none" />
       
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8 mx-[101px] my-[40px]">
+      <div className="relative z-10 max-w-5xl mx-auto text-center pt-10 space-y-8 mx-[101px] my-[40px]">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm shadow-md shadow-lime-400/20">
-          <div className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
-          <span className="text-lime-400 text-sm">La loterie ETH d'etherbay</span>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B3841B] bg-gradient-to-r from-[#C18F28] via-[#E1B051] to-[#C18F28] backdrop-blur-sm shadow-[0_6px_25px_rgba(179,132,27,0.45)] brightness-110">          
+          <div className="w-2 h-2 rounded-full bg-black animate-pulse" />
+          <span className="text-black text-sm">La loterie ETH d'etherbay</span>
         </div>
 
         {/* Main heading */}
@@ -28,8 +27,8 @@ export function Hero() {
           Une loterie pensée pour vous introduire à la cryptomonnaie.
         </p>
 
-        {/* CTA Button */}
-        <Link 
+        CTA Button
+//         <Link 
           to="/participate"
           className="inline-flex items-center gap-2 px-8 py-4 bg-lime-400 text-black rounded-full transition-all ease-in-out hover:shadow-xl hover:shadow-lime-400/20 group"
         >
@@ -39,10 +38,10 @@ export function Hero() {
 
         {/* Hero Image */}
         <div className="relative mt-16 max-w-4xl mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-t from-lime-400/20 to-transparent blur-3xl" />
-          <div className="relative rounded-2xl overflow-hidden border border-lime-500/20 bg-gradient-to-br from-purple-900/10 to-lime-900/10 backdrop-blur-sm p-4 md:p-8 shadow-2xl shadow-lime-400/10">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#E1B051]/20 to-transparent blur-3xl" />
+          <div className="relative rounded-2xl overflow-hidden border border-[#E1B051]/20 bg-black/20 backdrop-blur-sm p-4 md:p-4 shadow-2xl shadow-[#E1B051]/10">
             <img 
-              src={heroImage} 
+              src={image_fd9d89968419087df6bd0a5e4e9192dfc76af17d} 
               alt="Lottery Ticket" 
               className="w-full h-auto rounded-lg"
             />

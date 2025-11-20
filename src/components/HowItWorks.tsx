@@ -1,7 +1,6 @@
-import image_75f0fe1023929607e82dcb7a19c5c6616be59efb from '../assets/75f0fe1023929607e82dcb7a19c5c6616be59efb.png';
-import image_9780c49b2867f3570ec80d94af4a2e948e69da35 from '../assets/9780c49b2867f3570ec80d94af4a2e948e69da35.png';
-import image_74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47 from '../assets/74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47.png';
-
+import image_63c51e1634b770e2dcb9bae83b54f7ccc125fa11 from '../assets/63c51e1634b770e2dcb9bae83b54f7ccc125fa11.png';
+import image_d9e10532043ca2dcc119f5da055bdafa448bc5f6 from '../assets/d9e10532043ca2dcc119f5da055bdafa448bc5f6.png';
+import image_244e822cb06c8f6ee64dd839b1f487f8460d4a65 from '../assets/244e822cb06c8f6ee64dd839b1f487f8460d4a65.png';
 import { Wallet, Sparkles, Gift } from "lucide-react";
 import { Card } from "./ui/card";
 import { motion } from "motion/react";
@@ -13,7 +12,7 @@ const steps = [
     title: "Prends ton billet",
     description: "Achète ton billet avec des Ethers sur la blockchain et reçois un ticket blockchain.",
     date: "Du 11 au 30/11/25",
-    image: image_74d28d6c628c48fb7f7d7cefdb42dc5a05b43b47
+    image: image_244e822cb06c8f6ee64dd839b1f487f8460d4a65
   },
   {
     number: "02",
@@ -21,15 +20,15 @@ const steps = [
     title: "On lance le tirage",
     description: "Le tirage est géré par un smart contract et impossible à truquer.",
     date: "Le 28/12/25, à 20h (parfait !)",
-    image: image_9780c49b2867f3570ec80d94af4a2e948e69da35
+    image: image_d9e10532043ca2dcc119f5da055bdafa448bc5f6
   },
   {
     number: "03",
     icon: Gift,
     title: "Gagne des cadeaux !",
-    description: "Si ton numéro sort, tu peux le retirer. Tu peux cadeaux et montrer de la fierté.",
+    description: "Si ton numéro sort, bravo ! Ensuite à toi de venir le chercher sur place.",
     date: "Dès le 30/12/25",
-    image: image_75f0fe1023929607e82dcb7a19c5c6616be59efb
+    image: image_63c51e1634b770e2dcb9bae83b54f7ccc125fa11
   }
 ];
 
@@ -37,7 +36,7 @@ export function HowItWorks() {
   return (
     <section className="relative py-24 px-6">
       {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#E1B051]/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
@@ -48,9 +47,9 @@ export function HowItWorks() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm">
-            <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-            <span className="text-lime-400 text-sm">La loterie</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#C18F28] bg-gradient-to-r from-[#C18F28]/10 via-[#E1B051]/10 to-[#C18F28]/10 backdrop-blur-sm">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#E1B051]" />
+            <span className="text-[#E1B051] text-sm">La loterie</span>
           </div>
           <h2 className="text-4xl md:text-5xl text-white">Comment ça fonctionne</h2>
         </motion.div>
@@ -70,10 +69,10 @@ export function HowItWorks() {
               }}
             >
               <Card 
-                className="relative bg-gradient-to-br from-lime-900/30 to-black overflow-hidden group hover:border-lime-400/10 transition-all duration-300 hover:shadow-xl hover:shadow-lime-400/10"
+                className="relative bg-gradient-to-br from-gray-900/80 to-black border border-[#E1B051]/8 overflow-hidden group hover:border-[#E1B051]/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#E1B051]/10"
               >
                 {/* Card Image */}
-                <div className="relative w-full h-64 bg-gradient-to-br from-lime-900/20 to-black-900/20 mb-6">
+                <div className="relative w-full h-64 bg-gradient-to-br from-[#C18F28]/20 to-black-900/20 mb-6">
                   <img 
                     src={step.image}
                     alt={step.title}
@@ -83,9 +82,9 @@ export function HowItWorks() {
 
                 <div className="px-8 pb-8">
                   {/* Step badge */}
-                  <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-black border border-lime-400/30">
-                    <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                    <span className="text-lime-400 text-sm">Étape {index + 1}</span>
+                  <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-black border border-[#C18F28]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#E1B051]" />
+                    <span className="text-[#E1B051] text-sm">Étape {index + 1}</span>
                   </div>
 
                   {/* Content */}

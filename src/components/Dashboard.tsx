@@ -1,39 +1,41 @@
+import image_c5ca744fc3a9507fced4f2bf59c4f596da347e94 from '../assets/c5ca744fc3a9507fced4f2bf59c4f596da347e94.png';
 import image_a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60 from '../assets/a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60.png';
-import image_c5c3252e015834012d3df4c262c1bd36e00b399a from '../assets/c5c3252e015834012d3df4c262c1bd36e00b399a.png';
-import image_906dde62ccd59026a688442fdfde602d2ccafb99 from '../assets/906dde62ccd59026a688442fdfde602d2ccafb99.png';
-import image_a84bac59490bc9db33817025853566e5daaf7dc7 from '../assets/a84bac59490bc9db33817025853566e5daaf7dc7.png';
-import image_1d65a51c096acab9b6e363399c84f4ab84d222cc from '../assets/1d65a51c096acab9b6e363399c84f4ab84d222cc.png';
+import image_45ca0f5cca8c2e433c227408acd991a25e52f1fe from '../assets/45ca0f5cca8c2e433c227408acd991a25e52f1fe.png';
+import image_c91443a2f1e42cd1397e594daaf7f40f3246b356 from '../assets/c91443a2f1e42cd1397e594daaf7f40f3246b356.png';
+import image_199002b8d239883b54f1a2604082d866b15dbc74 from '../assets/199002b8d239883b54f1a2604082d866b15dbc74.png';
+import image_b77b3dd1c2eb8638468321c22264cb839f11ade4 from '../assets/b77b3dd1c2eb8638468321c22264cb839f11ade4.png';
+import image_d33a6b545d4b1dc39db1b6c432a7bc1a2dba6c92 from '../assets/d33a6b545d4b1dc39db1b6c432a7bc1a2dba6c92.png';
 import { Card } from "./ui/card";
 import { ArrowRight, Coins, Blocks, Wallet as WalletIcon, Zap } from "lucide-react";
-import dashboardImage from "../assets/7c16d0b0603316f2c555b608c2d58a73bb3f6bfe.png";
+
 
 const cryptoCards = [
   {
     icon: Coins,
     title: "C'est quoi une cryptomonnaie ?",
     description: "Une cryptomonnaie, c'est juste une forme d'argent numérique stockée dans un \"wallet\". Elle circule sur un grand registre public (la blockchain). Le but ? Pas besoin de banque ni d'autorisation, l'argent circule d'une personne à une autre via un système automatique et sécurisé.",
-    image: image_1d65a51c096acab9b6e363399c84f4ab84d222cc,
+    image: image_199002b8d239883b54f1a2604082d866b15dbc74,
     span: "col-span-1"
   },
   {
     icon: Blocks,
     title: "La blockchain",
     description: "C'est comme un carnet qui : est public (tout le monde peut le lire), est impossible à effacer, est mis à jour automatiquement toutes les quelques secondes, et n'appartient à personne.",
-    image: image_a84bac59490bc9db33817025853566e5daaf7dc7,
+    image: image_c91443a2f1e42cd1397e594daaf7f40f3246b356,
     span: "col-span-1"
   },
   {
     icon: WalletIcon,
     title: "Le wallet : ton compte crypto",
     description: "Il te donne : une adresse (comme un numéro IBAN), une clé privée (comme un mot de passe ultra important).",
-    image: image_906dde62ccd59026a688442fdfde602d2ccafb99,
+    image: image_b77b3dd1c2eb8638468321c22264cb839f11ade4,
     span: "col-span-1"
   },
   {
     icon: Zap,
     title: "Payer en crypto",
     description: "C'est comme faire un virement. Il faut juste l'adresse du destinataire, la blockchain vérifie et confirme l'envoi. Elle ne dort jamais, les paiements fonctionnent donc 24h/24.",
-    image: image_c5c3252e015834012d3df4c262c1bd36e00b399a,
+    image: image_d33a6b545d4b1dc39db1b6c432a7bc1a2dba6c92,
     span: "col-span-1"
   },
   {
@@ -50,8 +52,8 @@ export function Dashboard() {
   return (
     <section className="relative py-24 px-6">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#E1B051]/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#E1B051]/10 rounded-full blur-3xl" />
       
       <div className="relative z-10 max-w-7xl mx-auto space-y-16">
         {/* Header section */}
@@ -70,7 +72,7 @@ export function Dashboard() {
   {cryptoCards.slice(0, 2).map((card, index) => (
     <Card 
       key={index}
-      className="relative bg-[#0D0D0D] overflow-hidden group rounded-xl transition-all duration-500 hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)]"
+      className="relative bg-gradient-to-br from-gray-900/80 to-black overflow-hidden group rounded-xl transition-all duration-500"
     >
       {/* Card Image */}
       <div className="relative w-full h-56 overflow-hidden">
@@ -79,8 +81,6 @@ export function Dashboard() {
           alt={card.title}
           className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
         />
-        {/* Optional gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-lime-900/10 to-purple-900/10" />
       </div>
 
       {/* Text Section */}
@@ -100,7 +100,7 @@ export function Dashboard() {
                 return (
                   <Card 
                     key={index + 2}
-                    className="relative bg-[#0D0D0D] overflow-hidden group hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)] transition-all duration-300"
+                    className="relative bg-gradient-to-br from-gray-900/80 to-black overflow-hidden group hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)] transition-all duration-300"
                   >
                     {/* Top Section - Stats with overlapping images */}
                     <div className="p-8 pb-6">
@@ -109,21 +109,21 @@ export function Dashboard() {
                         <div className="flex -space-x-4">
                           <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1708426238272-994fcddabca4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0cmFpdCUyMHBlcnNvbnxlbnwxfHx8fDE3NjI5NjA5MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                              src={image_c5ca744fc3a9507fced4f2bf59c4f596da347e94}
                               alt="Person 1"
                               className="w-full h-full object-cover"
                             />
                           </div>
                           <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwxfHx8fDE3NjI5Njk0MjF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                              src={image_a8b37ae233f7de6082e6a5a74d5f6dfa9ade4e60}
                               alt="Person 2"
                               className="w-full h-full object-cover"
                             />
                           </div>
                           <div className="w-16 h-16 rounded-full border-2 border-black overflow-hidden">
                             <img 
-                              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                              src={image_45ca0f5cca8c2e433c227408acd991a25e52f1fe}
                               alt="Person 3"
                               className="w-full h-full object-cover"
                             />
@@ -148,7 +148,7 @@ export function Dashboard() {
                       </p>
                       
                       {/* Learn more link */}
-                      <button className="inline-flex items-center gap-2 text-lime-400 hover:text-lime-300 transition-colors group/link mt-2">
+                      <button className="inline-flex items-center gap-2 text-[#E1B051] hover:text-[#C18F28] transition-colors group/link mt-2">
                         <span className="text-sm">En savoir plus</span>
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                       </button>
@@ -161,10 +161,10 @@ export function Dashboard() {
               return (
                 <Card 
                   key={index + 2}
-                  className="relative bg-[#0D0D0D] overflow-hidden group hover:shadow-[0_8px_30px_rgba(163,230,53,0.15)] transition-all duration-300"
+                  className="relative bg-gradient-to-br from-gray-900/80 to-black overflow-hidden group hover: transition-all duration-300"
                 >
                   {/* Card Image */}
-                  <div className="relative w-full h-48 bg-gradient-to-br from-lime-900/20 to-purple-900/20">
+                  <div className="relative w-full h-48 bg-gradient-to-br from-[#C18F28]/20 to-purple-900/20 transition-all duration-300 group-hover:scale-105">
                     <img 
                       src={card.image}
                       alt={card.title}

@@ -22,7 +22,9 @@ export function CryptoComparison() {
   return (
     <section className="relative py-24 px-6">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-lime-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl" style={{
+        backgroundColor: 'rgba(225, 176, 81, 0.05)'
+      }} />
       
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section header */}
@@ -33,9 +35,12 @@ export function CryptoComparison() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 backdrop-blur-sm">
-            <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-            <span className="text-lime-400 text-sm">Pourquoi en crypto ?</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm" style={{
+            border: '1px solid rgba(193, 143, 40, 1)',
+            background: 'linear-gradient(to right, rgba(193, 143, 40, 0.1), rgba(225, 176, 81, 0.1), rgba(193, 143, 40, 0.1))'
+          }}>
+            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'rgba(225, 176, 81, 1)' }} />
+            <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>Pourquoi en crypto ?</span>
           </div>
           <h2 className="text-4xl md:text-5xl text-white max-w-3xl mx-auto">
             Il y a une meilleure façon de gérer la loterie
@@ -51,8 +56,10 @@ export function CryptoComparison() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Card className="relative bg-gradient-to-br from-gray-900/50 to-black border-red-500/20 p-8 h-full">
-              <h3 className="text-2xl text-white mb-8">En Euro €</h3>
+            <Card className="relative border-red-500/20 p-8 h-full" style={{
+              background: 'linear-gradient(to bottom right, rgba(17, 24, 39, 0.8), rgba(0, 0, 0, 1))'
+            }}>
+              <h3 className="text-2xl text-white mb-8"> €  Euro</h3>
               <div className="space-y-4">
                 {euroProblems.map((problem, index) => (
                   <motion.div
@@ -78,13 +85,15 @@ export function CryptoComparison() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Card className="relative bg-gradient-to-br from-lime-950/30 to-black border-lime-500/30 p-8 h-full hover:border-lime-400/50 transition-all duration-300">
+            <Card className="relative border-green-400/30 p-8 h-full" style={{
+              background: 'linear-gradient(to bottom right, rgba(74, 222, 128, 0.2), rgba(0, 0, 0, 1))'
+            }}>
               {/* Ethereum logo icon */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                    <path d="M12 2L5 12.5L12 16.5L19 12.5L12 2Z" fill="currentColor" className="text-lime-400" />
-                    <path d="M5 13.5L12 22L19 13.5L12 17.5L5 13.5Z" fill="currentColor" className="text-lime-400/60" />
+                    <path d="M12 2L5 12.5L12 16.5L19 12.5L12 2Z" fill="rgba(225, 176, 81, 1)" />
+                    <path d="M5 13.5L12 22L19 13.5L12 17.5L5 13.5Z" fill="rgba(193, 143, 40, 1)" />
                   </svg>
                 </div>
                 <h3 className="text-2xl text-white">Ethereum</h3>
@@ -99,7 +108,7 @@ export function CryptoComparison() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
-                    <CheckCircle2 className="w-5 h-5 text-lime-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'rgba(3, 189, 108, 1)' }} />
                     <span className="text-gray-300">{benefit}</span>
                   </motion.div>
                 ))}
