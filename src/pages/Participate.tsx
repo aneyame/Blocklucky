@@ -25,7 +25,7 @@ export function Participate() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
 
-  const predefinedAmounts = [10, 25, 50, 100, 200, 500];
+  const predefinedAmounts = [5, 10, 25, 50, 100, 200];
 
 
   // Fonction pour générer le PDF des tickets
@@ -244,15 +244,15 @@ export function Participate() {
       return
     }
 
-    // Convertir le montant en € vers SepoliaETH (10€ = 0.00000001 ETH)
+    // Convertir le montant en € vers SepoliaETH (5€ = 0.00000001 ETH)
     const euroAmount = selectedAmount || parseFloat(customAmount)
     if (!euroAmount || euroAmount <= 0) {
       alert("Veuillez sélectionner un montant valide")
       return
     }
     
-    // Conversion : 10€ = 0.00000001 ETH, donc 1€ = 0.000000001 ETH
-    const ethAmount = (euroAmount / 10) * 0.00000001
+    // Conversion : 5€ = 0.00000001 ETH, donc 1€ = 0.000000002 ETH
+    const ethAmount = (euroAmount / 5) * 0.00000001
     const ethAmountString = ethAmount.toFixed(18) // Précision maximale
 
     setIsLoading(true)
@@ -528,7 +528,7 @@ export function Participate() {
                     <ul className="text-sm text-gray-300 space-y-2">
                       <li className="flex items-start gap-2">
                         <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
-                        <span><strong>Prix par ticket :</strong> 10€ = 1 ticket</span>
+                        <span><strong>Prix par ticket :</strong> 5€ = 1 ticket</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
@@ -536,11 +536,11 @@ export function Participate() {
                       </li>
                       <li className="flex items-start gap-2">
                         <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
-                        <span><strong>Exemples :</strong> 20€ = 2 tickets | 25€ = 2 tickets | 34€ = 3 tickets | 500€ = 3 tickets</span>
+                        <span><strong>Exemples :</strong> 10€ = 2 tickets | 13€ = 2 tickets | 25€ = 3 tickets | 200€ = 3 tickets</span>
                       </li>
                     </ul>
                     <p className="text-xs text-gray-400 mt-3">
-                      Note : Les montants non-multiples de 10 sont arrondis vers le bas, avec un maximum de 3 tickets.
+                      Note : Les montants non-multiples de 5 sont arrondis vers le bas, avec un maximum de 3 tickets.
                     </p>
                   </div>
                   
