@@ -255,6 +255,26 @@ export function Participate() {
     const ethAmount = (euroAmount / 5) * 0.00000001
     const ethAmountString = ethAmount.toFixed(18) // Précision maximale
 
+    // Calculer le nombre de tickets demandés
+    const requestedTickets = Math.floor(euroAmount / 5)
+    const maxTickets = 3
+    const ticketsYouWillGet = Math.min(requestedTickets, maxTickets - ticketsBought)
+    
+    if (ticketsYouWillGet <= 0) {
+      alert(`Vous avez déjà atteint le maximum de ${maxTickets} tickets pour cette saison.`)
+      return
+    }
+    
+    // Avertir l'utilisateur du nombre de tickets qu'il va recevoir
+    const confirmMessage = `Vous allez recevoir ${ticketsYouWillGet} ticket(s) pour ${euroAmount}€.\n` +
+      `Tickets actuels: ${ticketsBought}/${maxTickets}\n` +
+      `Tickets après achat: ${ticketsBought + ticketsYouWillGet}/${maxTickets}\n\n` +
+      `Voulez-vous continuer ?`
+    
+    if (!confirm(confirmMessage)) {
+      return
+    }
+
     setIsLoading(true)
     try {
       const signer = await ethersProvider.getSigner()
@@ -478,8 +498,8 @@ export function Participate() {
                   }}
                 >
                   <Trophy className="w-16 h-16 mx-auto mb-4" style={{ color: 'rgba(138, 28, 38, 1)' }} />
-                  <div className="text-3xl mb-2">3 400€</div>
-                  <div className="text-gray-400">Prix à gagner au total</div>
+                  <div className="text-3xl mb-2">3 400</div>
+                  <div className="text-gray-400">Lots à gagner au total</div>
                 </motion.div>
 
                 <motion.div
