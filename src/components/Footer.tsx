@@ -10,7 +10,7 @@ interface FooterProps {
 
 export function Footer({ onHowItWorksClick, onHomeClick }: FooterProps = {}) {
   return (
-    <footer className="relative bg-black border-t border-gray-800/50 py-12 px-6">
+    <footer className="relative bg-black border-t border-gray-800/50 py-12 px-6 mt-12">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 mb-8 rounded-full blur-3xl" style={{
         backgroundColor: 'rgba(168, 85, 247, 0.05)'
@@ -185,7 +185,7 @@ export function Footer({ onHowItWorksClick, onHomeClick }: FooterProps = {}) {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800/50 ">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex md:flex-col justify-between items-center gap-6">
             <p className="text-gray-500 text-sm">
               © 2025 Etherbay Lottery. Tous droits réservés.
             </p>
@@ -196,6 +196,9 @@ export function Footer({ onHowItWorksClick, onHomeClick }: FooterProps = {}) {
               <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(225, 176, 81, 1)' }} />
               <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>Événement du 28-30 Nov 2025</span>
             </div>
+          </div>
+          <div style={{height : '50px'}}>
+
           </div>
         </div>
       </div>

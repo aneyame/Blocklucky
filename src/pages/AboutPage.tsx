@@ -8,7 +8,7 @@ interface AboutPageProps {
   onDonationClick?: () => void;
 }
 
-export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: AboutPageProps) {
+export function AboutPage({ onHowItWorksClick, onHomeClick, }: AboutPageProps) {
   return (
     <div className="min-h-screen bg-black text-white">
       <div style={{height : '140px'}}>
@@ -87,7 +87,7 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               Cette loterie caritative est notre projet phare pour initier les étudiants et le grand public à l'univers de la crypto 
               de manière simple, transparente et amusante, tout en soutenant des causes qui nous tiennent à cœur.
             </p>
-            <div className="grid md:grid-cols-3 gap-4 mt-8">
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}

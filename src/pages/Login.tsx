@@ -41,7 +41,7 @@ export function Login() {
   return (
     <div style={{ minHeight: '100vh', background: 'rgba(0, 0, 0, 1)', paddingBottom: '3rem', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ maxWidth: '28rem', margin: '0 auto', width: '100%' }}>
-        <div style={{ background: 'rgba(225, 176, 81, 0.1)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.75rem', padding: '2rem', backdropFilter: 'blur(4px)' }}>
+        <div style={{ background: 'rgba(225, 176, 81, 0.1)', borderRadius: '0.75rem', padding: '2rem', backdropFilter: 'blur(4px)' }}>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', color: 'rgba(225, 176, 81, 1)', marginBottom: '0.5rem', textAlign: 'center' }}>
             Connexion
           </h1>
@@ -64,7 +64,7 @@ export function Login() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
+                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
                 onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
                 onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 placeholder="votre@email.com"
@@ -80,7 +80,7 @@ export function Login() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
+                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
                 onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
                 onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 placeholder="••••••••"
