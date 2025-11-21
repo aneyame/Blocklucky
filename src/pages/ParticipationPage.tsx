@@ -1,12 +1,11 @@
-import { ArrowLeft, Sparkles, Heart, Gift } from "lucide-react";
+import { Sparkles, Heart, Gift } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface ParticipationPageProps {
-  onBack: () => void;
   onDonationClick?: () => void;
 }
 
-export function ParticipationPage({ onBack, onDonationClick }: ParticipationPageProps) {
+export function ParticipationPage({ onDonationClick }: ParticipationPageProps) {
   const navigate = useNavigate();
 
   const handleDonationClick = () => {
@@ -19,17 +18,6 @@ export function ParticipationPage({ onBack, onDonationClick }: ParticipationPage
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center py-20">
-      {/* Back Button */}
-      {/* <div className="fixed top-6 left-6 z-50">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/10 rounded-full transition-all duration-300"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Retour</span>
-        </button>
-      </div> */}
-
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-6 w-full">
         {/* Title Section */}

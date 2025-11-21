@@ -42,62 +42,66 @@ export function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-24 pb-12 px-4">
-      <div className="max-w-md mx-auto">
-        <div className="bg-gradient-to-br from-lime-500/20 to-green-600/20 border-2 border-lime-500/50 rounded-xl p-8 backdrop-blur-sm">
-          <h1 className="text-4xl font-bold text-white mb-2 text-center">
-            <span className="bg-gradient-to-r from-lime-400 to-green-400 bg-clip-text text-transparent">
-              Inscription
-            </span>
+    <div style={{ minHeight: '100vh', background: 'rgba(0, 0, 0, 1)', paddingBottom: '3rem', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ maxWidth: '28rem', margin: '0 auto', width: '100%' }}>
+        <div style={{ background: 'rgba(225, 176, 81, 0.1)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.75rem', padding: '2rem', backdropFilter: 'blur(4px)' }}>
+          <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', color: 'rgba(225, 176, 81, 1)', marginBottom: '0.5rem', textAlign: 'center' }}>
+            Inscription
           </h1>
-          <p className="text-gray-400 text-center mb-8">
+          <p style={{ color: 'rgba(156, 163, 175, 1)', textAlign: 'center', marginBottom: '2rem' }}>
             Créez votre compte pour participer à la loterie
           </p>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500 rounded-lg p-4 mb-6">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 1)', borderRadius: '0.5rem', padding: '1rem', marginBottom: '1.5rem' }}>
+              <p style={{ color: 'rgba(209, 213, 219, 1)', fontWeight: '600', padding: '0.5rem 1rem', borderRadius: '0.5rem' }}>{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleSignUp} className="space-y-6">
+          <form onSubmit={handleSignUp} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
-              <label className="text-white text-sm font-medium mb-2 block">
+              <label style={{ color: 'rgba(255, 255, 255, 1)', fontSize: '0.875rem', fontWeight: '500', marginBottom: '0.5rem', display: 'block' }}>
                 Email
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-black/40 border border-lime-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-500"
+                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 placeholder="votre@email.com"
                 required
               />
             </div>
 
             <div>
-              <label className="text-white text-sm font-medium mb-2 block">
+              <label style={{ color: 'rgba(255, 255, 255, 1)', fontSize: '0.875rem', fontWeight: '500', marginBottom: '0.5rem', display: 'block' }}>
                 Mot de passe
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-black/40 border border-lime-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-500"
+                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 placeholder="••••••••"
                 required
               />
             </div>
 
             <div>
-              <label className="text-white text-sm font-medium mb-2 block">
+              <label style={{ color: 'rgba(255, 255, 255, 1)', fontSize: '0.875rem', fontWeight: '500', marginBottom: '0.5rem', display: 'block' }}>
                 Confirmer le mot de passe
               </label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-black/40 border border-lime-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-500"
+                style={{ width: '100%', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid rgba(225, 176, 81, 0.3)', borderRadius: '0.5rem', padding: '0.75rem 1rem', color: 'rgba(255, 255, 255, 1)', outline: 'none' }}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 0.3)'}
                 placeholder="••••••••"
                 required
               />
@@ -106,18 +110,20 @@ export function SignUp() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-lime-400 to-green-500 text-black font-bold py-3 px-6 rounded-lg hover:from-lime-300 hover:to-green-400 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              style={{ width: '100%', background: 'rgba(138, 28, 38, 1)', color: 'rgba(255, 255, 255, 1)', fontWeight: '600', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: 'none', cursor: 'pointer', transition: 'background 0.2s', opacity: isLoading ? '0.5' : '1' }}
+              onMouseEnter={(e) => !isLoading && (e.currentTarget.style.background = 'rgba(110, 14, 26, 1)')}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(138, 28, 38, 1)'}
             >
-              <span className={isLoading ? "text-gray-600 bg-lime-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-lime-300 transition-colors" : "bg-lime-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-lime-300 transition-colors"}>
-                {isLoading ? "Inscription..." : "S'inscrire"}
-              </span>
+              {isLoading ? "Inscription..." : "S'inscrire"}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-gray-400 text-sm">
+          <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+            <p style={{ color: 'rgba(156, 163, 175, 1)', fontSize: '0.875rem' }}>
               Déjà un compte ?{" "}
-              <Link to="/login" className="text-lime-400 hover:text-lime-300 font-semibold">
+              <Link to="/login" style={{ color: 'rgba(225, 176, 81, 1)', fontWeight: '600', textDecoration: 'none' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(225, 176, 81, 0.8)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(225, 176, 81, 1)'}>
                 Se connecter
               </Link>
             </p>

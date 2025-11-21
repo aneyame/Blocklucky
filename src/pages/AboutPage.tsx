@@ -1,6 +1,5 @@
 import { Users, MapPin, Calendar, Sparkles, Heart, Gift, Trophy, Music, Utensils } from "lucide-react";
 import { motion } from "motion/react";
-import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
 interface AboutPageProps {
@@ -270,110 +269,110 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            style={{ textAlign: 'center', marginBottom: '4rem' }}
           >
-            <h2 className="text-4xl md:text-5xl text-white mb-4">
+            <h2 style={{ fontSize: '2.25rem', lineHeight: '2.5rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '1rem' }}>
               Programme de l'événement
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p style={{ color: 'rgba(156, 163, 175, 1)', maxWidth: '42rem', margin: '0 auto' }}>
               Trois jours de festivités, concerts, conférences et tirages au sort.<br />
               Ne manquez pas les annonces des gagnants !
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {/* Day 1 - Jeudi 28 */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0 * 0.2, ease: "easeOut" }}
-              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
+              style={{ borderRadius: '1rem', padding: '1.5rem', background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
-              <div className="mb-6 pb-6 border-b border-gray-800">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>28</span>
+              <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(31, 41, 55, 1)' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '3rem', lineHeight: '1', color: 'rgba(225, 176, 81, 1)' }}>28</span>
                   <div>
-                    <div className="text-white">Novembre</div>
-                    <div className="text-sm text-gray-400">Jeudi</div>
+                    <div style={{ color: 'rgba(255, 255, 255, 1)' }}>Novembre</div>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)' }}>Jeudi</div>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">14:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Ouverture de l'événement</h4>
-                    <p className="text-xs text-gray-500">Début des festivités avec animations et stands</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">15:30</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Conférence Crypto pour débutants</h4>
-                    <p className="text-xs text-gray-500">Introduction à la blockchain et aux cryptomonnaies</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>14:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Ouverture de l'événement</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Début des festivités avec animations et stands</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>15:30</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Conférence Crypto pour débutants</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Introduction à la blockchain et aux cryptomonnaies</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>17:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>17:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
-                    <h4 className="text-sm text-white mb-1">Tirage au sort #1</h4>
-                    <p className="text-xs text-gray-500">Annonce des premiers gagnants de la loterie</p>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Tirage au sort #1</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Annonce des premiers gagnants de la loterie</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">18:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Concert Live - DJ Set</h4>
-                    <p className="text-xs text-gray-500">Performance électro par DJ Neon Wave</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
-                    </div>
-                  </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>20:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
-                    </div>
-                    <h4 className="text-sm text-white mb-1">Tirage au sort #2</h4>
-                    <p className="text-xs text-gray-500">Deuxième série de gagnants révélée</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>18:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Concert Live - DJ Set</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Électro par DJ Neon Wave</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
+                    </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">21:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Afterparty</h4>
-                    <p className="text-xs text-gray-500">Soirée festive avec musique et animations</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>20:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
+                    </div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Tirage au sort #2</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Deuxième série de gagnants révélée</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>21:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Afterparty</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Soirée festive avec musique et animations</p>
                   </div>
                 </div>
               </div>
@@ -385,103 +384,103 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 1 * 0.2, ease: "easeOut" }}
-              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
+              style={{ borderRadius: '1rem', padding: '1.5rem', background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
-              <div className="mb-6 pb-6 border-b border-gray-800">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>29</span>
+              <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(31, 41, 55, 1)' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '3rem', lineHeight: '1', color: 'rgba(225, 176, 81, 1)' }}>29</span>
                   <div>
-                    <div className="text-white">Novembre</div>
-                    <div className="text-sm text-gray-400">Vendredi</div>
+                    <div style={{ color: 'rgba(255, 255, 255, 1)' }}>Novembre</div>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)' }}>Vendredi</div>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">10:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Ouverture jour 2</h4>
-                    <p className="text-xs text-gray-500">Reprise des activités et animations</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">11:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Atelier: Créer son wallet</h4>
-                    <p className="text-xs text-gray-500">Session pratique pour démarrer avec la crypto</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>10:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Ouverture jour 2</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Reprise des activités et animations</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>11:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Atelier: Créer son wallet</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Session pratique pour démarrer avec la crypto</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
-                    <h4 className="text-sm text-white mb-1">Tirage au sort #3</h4>
-                    <p className="text-xs text-gray-500">Nouveaux gagnants annoncés en direct</p>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Tirage au sort #3</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Nouveaux gagnants annoncés en direct</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">14:30</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Table ronde: L'avenir du Web3</h4>
-                    <p className="text-xs text-gray-500">Discussions avec des experts de la blockchain</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">16:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Concert - Groupe local</h4>
-                    <p className="text-xs text-gray-500">Performance live d'un groupe d'Etherbay</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>14:30</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Table ronde: L'avenir du Web3</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Discussions avec des experts de la blockchain</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>16:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Concert - Groupe local</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Performance live d'un groupe d'Etherbay</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
-                    <h4 className="text-sm text-white mb-1">Tirage au sort #4</h4>
-                    <p className="text-xs text-gray-500">Quatrième vague de gagnants</p>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Tirage au sort #4</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Quatrième vague de gagnants</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">20:30</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Soirée Neon Party</h4>
-                    <p className="text-xs text-gray-500">Ambiance futuriste et DJ sets</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>20:30</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Soirée Neon Party</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Ambiance futuriste et DJ sets</p>
                   </div>
                 </div>
               </div>
@@ -493,103 +492,103 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 2 * 0.2, ease: "easeOut" }}
-              className="rounded-2xl p-6" style={{ background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
+              style={{ borderRadius: '1rem', padding: '1.5rem', background: 'linear-gradient(to bottom right, rgba(193, 143, 40, 0.05), rgba(225, 176, 81, 0.05))', border: '1px solid rgba(225, 176, 81, 0.2)' }}
             >
-              <div className="mb-6 pb-6 border-b border-gray-800">
-                <div className="flex items-baseline gap-3">
-                  <span className="text-5xl" style={{ color: 'rgba(225, 176, 81, 1)' }}>30</span>
+              <div style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(31, 41, 55, 1)' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '3rem', lineHeight: '1', color: 'rgba(225, 176, 81, 1)' }}>30</span>
                   <div>
-                    <div className="text-white">Novembre</div>
-                    <div className="text-sm text-gray-400">Samedi</div>
+                    <div style={{ color: 'rgba(255, 255, 255, 1)' }}>Novembre</div>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)' }}>Samedi</div>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">10:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Dernier jour - Ouverture</h4>
-                    <p className="text-xs text-gray-500">Dernière journée de festivités</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">11:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Smart Contracts expliqués</h4>
-                    <p className="text-xs text-gray-500">Comprendre la technologie derrière la loterie</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>10:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Dernier jour - Ouverture</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Dernière journée de festivités</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>11:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Smart Contracts expliqués</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Comprendre la technologie derrière la loterie</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>12:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
-                    <h4 className="text-sm text-white mb-1">Tirage au sort #5</h4>
-                    <p className="text-xs text-gray-500">Avant-dernière série de gagnants</p>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Tirage au sort #5</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Avant-dernière série de gagnants</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">14:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Concert Final - Artiste principal</h4>
-                    <p className="text-xs text-gray-500">Performance de clôture avec artiste invité</p>
-                  </div>
-                </div>
-                
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
-                  </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">16:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Distribution des cadeaux</h4>
-                    <p className="text-xs text-gray-500">Remise des lots aux gagnants présents</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>14:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Concert Final - Artiste principal</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Performance de clôture avec artiste invité</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4 pb-4" style={{ borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(193, 143, 40, 1)' }}>
-                      <div className="w-3 h-3 rounded-full" style={{ background: 'rgba(0, 0, 0, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
+                  </div>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>16:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Distribution des cadeaux</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Remise des lots aux gagnants présents</p>
+                  </div>
+                </div>
+                
+                <div style={{ position: 'relative', paddingLeft: '16px', paddingBottom: '16px', borderLeft: '2px solid rgba(193, 143, 40, 1)' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(193, 143, 40, 1)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'rgba(0, 0, 0, 1)' }} />
                     </div>
                   </div>
-                  <div className="ml-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm" style={{ color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
-                      <Trophy className="w-4 h-4" style={{ color: 'rgba(225, 176, 81, 1)' }} />
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '0.875rem', color: 'rgba(225, 176, 81, 1)' }}>19:00</span>
+                      <Trophy style={{ width: '16px', height: '16px', color: 'rgba(225, 176, 81, 1)' }} />
                     </div>
-                    <h4 className="text-sm text-white mb-1">Grand Tirage Final</h4>
-                    <p className="text-xs text-gray-500">Derniers gagnants et clôture de la loterie</p>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 1)', marginBottom: '4px' }}>Grand Tirage Final</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Derniers gagnants et clôture de la loterie</p>
                   </div>
                 </div>
                 
-                <div className="relative pl-4" style={{ borderLeft: '2px solid rgba(75, 85, 99, 1)' }}>
-                  <div className="absolute -left-3 top-0">
-                    <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(75, 85, 99, 1)' }} />
+                <div style={{ position: 'relative', paddingLeft: '16px' }}>
+                  <div style={{ position: 'absolute', left: '-12px', top: '0' }}>
+                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(75, 85, 99, 1)' }} />
                   </div>
-                  <div className="ml-6">
-                    <div className="text-sm text-gray-400 mb-1">20:00</div>
-                    <h4 className="text-sm text-gray-300 mb-1">Clôture de l'événement</h4>
-                    <p className="text-xs text-gray-500">Remerciements et fin des festivités</p>
+                  <div style={{ marginLeft: '24px' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'rgba(156, 163, 175, 1)', marginBottom: '4px' }}>20:00</div>
+                    <h4 style={{ fontSize: '0.875rem', color: 'rgba(209, 213, 219, 1)', marginBottom: '4px' }}>Clôture de l'événement</h4>
+                    <p style={{ fontSize: '0.75rem', color: 'rgba(107, 114, 128, 1)' }}>Remerciements et fin des festivités</p>
                   </div>
                 </div>
               </div>
@@ -601,14 +600,14 @@ export function AboutPage({ onHowItWorksClick, onHomeClick, onDonationClick }: A
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="text-center mt-12"
+            style={{ textAlign: 'center', marginTop: '3rem' }}
           >
-            <p className="text-white mb-4" style={{marginTop : "80px"}}>
+            <p style={{ color: 'rgba(255, 255, 255, 1)', marginBottom: '1rem', marginTop: '80px' }}>
               Tous les tirages sont diffusés en direct sur place
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full" style={{ border: '1px solid rgba(179, 132, 27, 0.4)', background: 'linear-gradient(to right, rgba(193, 143, 40, 0.4), rgba(225, 176, 81, 0.4), rgba(193, 143, 40, 0.4))', marginBottom : '200px', paddingLeft : '20px', paddingRight : '20px', paddingTop : '10px', paddingBottom : '10px' }}>
-              <Trophy className="w-5 h-5" style={{ color: 'rgba(179, 132, 27, 1)' }} />
-              <span className="text-white px-5 py-6">6 tirages au sort sur 3 jours</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '9999px', border: '1px solid rgba(179, 132, 27, 0.4)', background: 'linear-gradient(to right, rgba(193, 143, 40, 0.4), rgba(225, 176, 81, 0.4), rgba(193, 143, 40, 0.4))', marginBottom: '200px', padding: '10px 20px' }}>
+              <Trophy style={{ width: '20px', height: '20px', color: 'rgba(179, 132, 27, 1)' }} />
+              <span style={{ color: 'rgba(255, 255, 255, 1)', padding: '6px 20px' }}>6 tirages au sort sur 3 jours</span>
             </div>
           </motion.div>
         </div>

@@ -3,7 +3,7 @@ import { ethers } from "ethers"
 import { getConnectedAccount, getEthersProvider, CONTRACT_ADDRESS, subscribeToWalletChanges } from "../lib/wallet"
 import { supabase } from "../lib/supabase"
 import LotteryABI from "../lib/LotteryABI.json"
-import { DollarSign, Users, ArrowLeft, TrendingUp } from "lucide-react";
+import { DollarSign, Users, TrendingUp } from "lucide-react";
 import { Card } from "../components/ui/card";
 
 

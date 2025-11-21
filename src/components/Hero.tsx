@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 export function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 overflow-visible">
+      <div style={{height : '50px'}}>
+
+      </div>
       {/* Gradient overlay */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(225, 176, 81, 0.05), transparent, rgba(0, 0, 0, 1))'

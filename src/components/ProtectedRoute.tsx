@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { supabase } from "../lib/supabase"
+import { isAdmin } from "../lib/admin"
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<any>(null)
@@ -31,6 +32,11 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (!session) {
     return <Navigate to="/login" replace />
+  }
+
+  // Bloquer l'accès aux admins
+  if (isAdmin(session.user?.email)) {
+    return <Navigate to="/admin" replace />
   }
 
   return <>{children}</>

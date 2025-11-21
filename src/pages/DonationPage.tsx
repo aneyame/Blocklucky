@@ -1,6 +1,5 @@
 import { Wallet, Heart, Trophy, Shield, ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
 

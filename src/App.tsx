@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/how-it-works" element={<ParticipationPage onBack={() => window.history.back()} />} />
+          <Route path="/how-it-works" element={<ParticipationPage />} />
           <Route path="/HowitWorksPage" element={<HowItWorksPage onAboutClick={() => {}} onHomeClick={() => {}} />} />
           <Route path="/AboutPage" element={<AboutPage onHowItWorksClick={() => {}} onHomeClick={() => {}} />} />
           <Route 

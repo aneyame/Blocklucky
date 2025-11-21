@@ -7,8 +7,6 @@ import LotteryABI from "../lib/LotteryABI.json"
 import jsPDF from "jspdf"
 import { Wallet, Heart, Trophy, Shield, ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
 
 
 
@@ -27,7 +25,7 @@ export function Participate() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
 
-  const predefinedAmounts = [10, 25, 50, 100, 250, 500];
+  const predefinedAmounts = [10, 25, 50, 100, 200, 500];
 
 
   // Fonction pour générer le PDF des tickets
@@ -511,6 +509,40 @@ export function Participate() {
               >
                 <div className="bg-gradient-to-br from-gray-900/80 to-black rounded-2xl p-8 backdrop-blur-sm" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(225, 176, 81, 0.2)' }}>
                   <h2 className="text-2xl mb-6 text-center">Choisissez votre montant</h2>
+
+                  <div>
+
+                  </div>
+                  
+                  {/* Ticket Allocation Info */}
+                  <div className="mb-6 p-4 rounded-xl" style={{
+                    backgroundColor: 'rgba(225, 176, 81, 0.1)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(225, 176, 81, 0.3)'
+                  }}>
+                    <h3 className="text-sm mb-3 flex items-center gap-2" style={{ color: 'rgba(225, 176, 81, 1)' }}>
+                      <Sparkles className="w-4 h-4" />
+                      Comment fonctionne l'attribution des tickets ?
+                    </h3>
+                    <ul className="text-sm text-gray-300 space-y-2">
+                      <li className="flex items-start gap-2">
+                        <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
+                        <span><strong>Prix par ticket :</strong> 10€ = 1 ticket</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
+                        <span><strong>Maximum :</strong> 3 tickets par personne</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span style={{ color: 'rgba(225, 176, 81, 1)' }}>•</span>
+                        <span><strong>Exemples :</strong> 20€ = 2 tickets | 25€ = 2 tickets | 34€ = 3 tickets | 500€ = 3 tickets</span>
+                      </li>
+                    </ul>
+                    <p className="text-xs text-gray-400 mt-3">
+                      Note : Les montants non-multiples de 10 sont arrondis vers le bas, avec un maximum de 3 tickets.
+                    </p>
+                  </div>
                   
                   {/* Predefined Amounts */}
                   <div className="grid grid-cols-2 md:grid-cols-3 mb-6" style={{ gap: '1rem' }}>
@@ -550,7 +582,7 @@ export function Participate() {
 
                   {/* Custom Amount */}
                   <div className="mb-8">
-                    <label className="block text-sm text-gray-400 mb-2 p-2 rounded" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(55, 65, 81, 1)' }}>
+                    <label className="block text-sm text-gray-400 mb-2 p-2 rounded " style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(55, 65, 81, 1)' }}>
                       Ou entrez un montant personnalisé
                     </label>
                     <div className="relative">
@@ -573,7 +605,8 @@ export function Participate() {
                           backgroundColor: 'rgba(31, 41, 55, 0.5)',
                           borderWidth: '1px',
                           borderStyle: 'solid',
-                          borderColor: 'rgba(55, 65, 81, 1)'
+                          borderColor: 'rgba(55, 65, 81, 1)',
+                          marginTop: '0.5rem',
                         }}
                         onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(225, 176, 81, 1)'}
                         onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(55, 65, 81, 1)'}
@@ -595,7 +628,7 @@ export function Participate() {
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />
-                        <span className="text-gray-300">100% de votre don va directement à une associations caritatives partenaire de l'évènement</span>
+                        <span className="text-gray-300">100% de votre don va directement à une association caritative partenaire de l'évènement</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <Check className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'rgba(3, 189, 108, 1)' }} />

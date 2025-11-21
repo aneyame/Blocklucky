@@ -13,18 +13,28 @@ const ConnectWalletButton = withConnectWallet(({ onClick, children, scrolled }: 
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`text-white rounded-full transition-all duration-1200 ease-in-out flex items-center gap-2 ${
-        scrolled ? 'px-3 py-2' : 'px-6 py-2'
-      }`}
       style={{
+        color: 'rgba(255, 255, 255, 1)',
+        borderRadius: '9999px',
+        transition: 'all 1200ms ease-in-out',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: scrolled ? '8px' : '8px 24px',
         background: isHovered ? 'rgba(138, 28, 38, 1)' : 'rgba(110, 14, 26, 1)',
-        boxShadow: isHovered ? '0 10px 15px -3px rgba(138, 28, 38, 0.4), 0 4px 6px -4px rgba(138, 28, 38, 0.4)' : 'none'
+        boxShadow: isHovered ? '0 10px 15px -3px rgba(138, 28, 38, 0.4), 0 4px 6px -4px rgba(138, 28, 38, 0.4)' : 'none',
+        border: 'none',
+        cursor: 'pointer'
       }}
     >
-      <Wallet className={`transition-all duration-1200 ease-in-out ${scrolled ? 'w-4 h-4' : 'w-4 h-4'}`} />
-      <span className={`transition-all duration-1200 ease-in-out whitespace-nowrap overflow-hidden ${
-        scrolled ? 'w-0 opacity-0' : 'w-auto opacity-100'
-      }`}>{children}</span>
+      <Wallet style={{ width: '16px', height: '16px', transition: 'all 1200ms ease-in-out' }} />
+      <span style={{
+        transition: 'all 1200ms ease-in-out',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        width: scrolled ? '0' : 'auto',
+        opacity: scrolled ? 0 : 1
+      }}>{children}</span>
     </button>
   );
 });
