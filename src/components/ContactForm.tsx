@@ -1,4 +1,4 @@
-import { MapPin, Mail, Send } from "lucide-react";
+import { MapPin, Send } from "lucide-react";
 import { Card } from "./ui/card";
 import { useState } from "react";
 
